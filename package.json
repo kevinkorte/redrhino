@@ -2,7 +2,7 @@
   "name": "redrhino",
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor --settings dev-settings.json"
   },
   "dependencies": {
     "meteor-node-stubs": "~0.2.0"
