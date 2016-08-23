@@ -29,7 +29,7 @@ Template.signupForm.rendered = function(){
     submitHandler: function(){
       //create our customer object from the field
       let customer = {
-        name: $('[name="fullName"]').val(),
+        name: $('[name="name"]').val(),
         emailAddress: $('[name="emailAddress"]').val(),
         password: $('[name="password"]').val(),
         plan: 'basic-monthly-1'
@@ -40,7 +40,7 @@ Template.signupForm.rendered = function(){
        Meteor.call('createTrialCustomer', customer, function(error, response){
          if( error ) {
            //if our meteor app errors
-           alert(error.reason);
+           alert(error);
            //reset bootstrap button above
            submitButton.button('reset');
          } else {
@@ -49,6 +49,7 @@ Template.signupForm.rendered = function(){
              alert( response.message );
              submitButton.button('reset');
            } else {
+             console.log('login');
              Meteor.loginWithPassword(customer.emailAddress, customer.password, function(error){
                if( error ) {
                  alert(error.reason);
@@ -56,12 +57,12 @@ Template.signupForm.rendered = function(){
                } else {
                  FlowRouter.go('/home');
                  submitButton.button('reset');
-               }
-             }//ends Meteor.loginWithPassword
-           }
-         }
-       } //end meteor call 'createTrialCustomer'
+               }//ends if statement
+             });//ends Meteor.loginWithPassword
+           }//ends if response.error statement
+         }//ends if error statement
+       }); //end meteor call 'createTrialCustomer'
 
-    }
+    }//ends submitHandler callback
   });
-}
+};

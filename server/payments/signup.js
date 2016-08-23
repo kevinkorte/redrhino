@@ -8,7 +8,6 @@ Meteor.methods({
       password: String,
       plan: String,
     });
-
     //we check if the email address already exists in our records
     //and if so, we do not sign them up again
     var emailRegex     = new RegExp(customer.emailAddress, "i");
@@ -20,7 +19,7 @@ Meteor.methods({
       Meteor.call('stripeCreateCustomer', customer.emailAddress, function(error, stripeCustomer){
         if( error ) {
           //better error handling here?
-          console.log(error)
+          console.log(error);
         } else {
           let customerId = stripeCustomer.id,
               plan       = customer.plan;
@@ -40,11 +39,10 @@ Meteor.methods({
                   customerId: customerId,
                   subscription: {
                     plan: {
-                      name: customer.plan,
-                      used: 0
+                      name: customer.plan
                     },
                   }
-                }
+                };//end subscription var
                 Meteor.users.update(user, {
                   $set: subscription
                 }, function(error, response){
@@ -53,18 +51,19 @@ Meteor.methods({
                   } else {
                     newCustomer.return(user);
                   }
-                });
+                });//end Meteor.users.update
               } catch( exception ) {
                 newCustomer.return(exception);
-              }
-            });
-          }
-      });
-      return newCustomer.wait();
-    } else {
+              }//end catch
+            }//end if statement
+          });//end stripe create subscription call
+          return newCustomer.wait();
+        }//ends if
+      });//ends stripecreatecustomer
+    } else { //customer lookup came back true
       throw new Meteor.Error('customer-exists', 'Sorry, that customer email already exists!');
     }
-  },
+  },//ends create trial customer method
   stripeCreateCustomer: function(email){
     check(email, String);
     let stripeCustomer = new Future();
@@ -102,4 +101,4 @@ Meteor.methods({
     });
     return stripeSubscription.wait();
   }
-});
+});//end meteor methods
