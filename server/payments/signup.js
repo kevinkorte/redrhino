@@ -8,8 +8,8 @@ Meteor.methods({
       password: String,
       plan: String,
     });
-    //we check if the email address already exists in our records
-    //and if so, we do not sign them up again
+    // we check if the email address already exists in our records
+    // and if so, we do not sign them up again
     var emailRegex     = new RegExp(customer.emailAddress, "i");
     var lookupCustomer = Meteor.users.findOne({"emails.address": emailRegex});
 
@@ -18,7 +18,7 @@ Meteor.methods({
 
       Meteor.call('stripeCreateCustomer', customer.emailAddress, function(error, stripeCustomer){
         if( error ) {
-          //better error handling here?
+          // better error handling here?
           console.log(error);
         } else {
           let customerId = stripeCustomer.id,
@@ -26,7 +26,7 @@ Meteor.methods({
 
           Meteor.call('stripeCreateSubscription', customerId, plan, function(error, response){
             if( error ) {
-              //better error handling here?
+              // better error handling here?
               console.log(error);
             } else {
               try {
@@ -42,7 +42,7 @@ Meteor.methods({
                       name: customer.plan
                     },
                   }
-                };//end subscription var
+                };// end subscription var
                 Meteor.users.update(user, {
                   $set: subscription
                 }, function(error, response){
@@ -51,19 +51,19 @@ Meteor.methods({
                   } else {
                     newCustomer.return(user);
                   }
-                });//end Meteor.users.update
+                });// end Meteor.users.update
               } catch( exception ) {
                 newCustomer.return(exception);
-              }//end catch
-            }//end if statement
-          });//end stripe create subscription call
-          return newCustomer.wait();
-        }//ends if
-      });//ends stripecreatecustomer
-    } else { //customer lookup came back true
+              }// end catch
+            }// end if statement
+          });// end stripe create subscription call
+        }// ends if
+      });// ends stripecreatecustomer
+      return newCustomer.wait();
+    } else { // customer lookup came back true
       throw new Meteor.Error('customer-exists', 'Sorry, that customer email already exists!');
     }
-  },//ends create trial customer method
+  }, // ends create trial customer method
   stripeCreateCustomer: function(email){
     check(email, String);
     let stripeCustomer = new Future();
@@ -81,7 +81,7 @@ Meteor.methods({
     });
 
     return stripeCustomer.wait();
-  },//end stripeCreateCustomer
+  }, // end stripeCreateCustomer
   stripeCreateSubscription: function(customer, plan){
     check(customer, String);
     check(plan, String);
@@ -101,4 +101,4 @@ Meteor.methods({
     });
     return stripeSubscription.wait();
   }
-});//end meteor methods
+});// end meteor methods
