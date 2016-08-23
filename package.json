@@ -26,6 +26,9 @@
       },
       "rules": {
         "semi": [2, "never"]
+      },
+      "globals": {
+        "FlowRouter": false
       }
   },
   "dependencies": {
