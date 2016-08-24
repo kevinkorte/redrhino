@@ -4,7 +4,7 @@
       "testPublishableKey": "pk_test_xxxxxxxxxxxxxxxxxxxxxxxx",
       "livePublishableKey": "pk_live_xxxxxxxxxxxxxxxxxxxxxxxx"
     },
-    "mapsapi": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "mapsapi": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
   },
   "private": {
     "stripe": {
