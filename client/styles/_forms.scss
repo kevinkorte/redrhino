@@ -15,3 +15,32 @@
     box-shadow: 0 0 7px rgba(39,128,248,.15);
   }
 }
+
+/*
+  GEOLOCATION INPUT
+  a material theme inspired input used
+  for searching for locations w/ Google's
+  API, match styles to search results dropdown
+*/
+.geolocation-searchbox {
+  width: 100%;
+  height: 40px;
+  border-radius: 4px 4px 0 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  background-color: #fff;
+}
+.geolocation-input {
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  font-size: 15px;
+  outline: 0;
+  border: 0;
+  border-radius: 4px 4px 0 0;
+  color: $geo-input-color;
+}
+.upcoming-desc {
+  text-transform: uppercase;
+  font-size: 10px;
+  color: darken($bg-upcoming, 22%);
+}
