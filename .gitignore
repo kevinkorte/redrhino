@@ -1,5 +1,6 @@
 node_modules/
 dev-settings.json
+npm-debug.log
 client/lib/semantic-ui/definitions
 client/lib/semantic-ui/themes
 client/lib/semantic-ui/.custom.semantic.json
