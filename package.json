@@ -40,12 +40,6 @@
     "eslint-config-airbnb": "^10.0.1",
     "eslint-import-resolver-meteor": "^0.3.3",
     "eslint-plugin-import": "^1.14.0",
-    "eslint-plugin-meteor": "^4.0.0",
-    "autoprefixer": "^6.3.1"
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {"browsers": ["last 2 versions"]}
-    }
+    "eslint-plugin-meteor": "^4.0.0"
   }
 }

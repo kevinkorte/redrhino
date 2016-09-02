@@ -1,11 +1,14 @@
 <template name="dashboardLayout">
   <div class="dashboard-wrapper">
-    <div class="dashboard-fluid">
-      <div class="topbar"></div>
-      <div class="viewings"></div>
+    <div class="topbar">
+      <div class="logo"></div>
+      <button class="btn btn-default">New</button>
     </div>
-    <div class="dashboard-fixed">
-      {{> upcoming }}
+    <div class="dashboard-fluid">
+      <div class="viewings"></div>
+      <div class="dashboard-fixed">
+        {{> upcoming }}
+      </div>
     </div>
   </div>
 </template>

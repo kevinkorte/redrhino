@@ -46,6 +46,5 @@ mrgalaxy:stripe
 momentjs:moment
 random
 jeremy:geocomplete
-semantic:ui
-juliancwirko:postcss
-less
+standard-minifier-css
+twbs:bootstrap
