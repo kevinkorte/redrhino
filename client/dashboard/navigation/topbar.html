@@ -1,6 +1,17 @@
 <template name="topbar">
-  <nav class="navbar-dark">
-
-  </nav>
+  <div class="topbar">
+    <div class="nav-items-left-wrapper">
+      <ul class="nav-items-left">
+        <li><a href="#">My Viewings</a></li>
+        <li class="new-btn-wrapper"><button class="new-viewing"><i class="glyphicon glyphicon-plus"></i></button></li>
+      </ul>
+    </div>
+    <div class="nav-search-center">
+      <form action="">
+        <input type="search">
+      </form>
+    </div>
+    <div class="nav-account"></div>
+  </div>
   {{> newEventModal }}
 </template>

@@ -1,5 +1,51 @@
-.navbar-dark {
-  width: 100%;
-  height: 68px;
-  background-color: $navbar-dark;
+// .navbar-dark {
+//   width: 100%;
+//   height: 68px;
+//   background-color: $navbar-dark;
+// }
+.nav-items-left {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    padding-right: 12px;
+  }
+}
+.new-btn-wrapper {
+  position: relative;
+    z-index: 0;
+}
+.new-viewing {
+  border-radius: 100%;
+  height: 42px;
+  width: 42px;
+  border: none;
+  @extend .gradient-sweet-morning;
+
+
+  &::after {
+    content: '';
+    position: absolute;
+    height: 46px;
+    width: 46px;
+    background: red;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: .5;
+  }
+
+  &:hover::after {
+    height: 46px;
+    width: 46px;
+    background: red;
+  }
+}
+.nav-search-center {
+  width: 30%;
 }

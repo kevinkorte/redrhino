@@ -1,5 +1,5 @@
 body {
-  background: $bg-home;
+  //background: $bg-home;
 }
 
 .dashboard-wrapper {
@@ -27,44 +27,14 @@ body {
 */
 .topbar {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 40px;
+  padding-right: 40px;
   height: 60px;
   width: 100%;
-  background: #fff;
+  background: #3f4950;
   //box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.3);
-}
-.logo {
-  margin-right: 60px;
-  height: 100%;
-  width: 60px;
-  // background: #cb2d3e; /* fallback for old browsers */
-  // background: -webkit-linear-gradient(right, #cb2d3e, #ef473a);
-  // background: -o-linear-gradient(right, #cb2d3e, #ef473a);
-  // background: linear-gradient(to left, #cb2d3e, #ef473a); /* Chrome 10-25, Safari 5.1-6 */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-.btn-new {
-  color: #fff;
-  //background-color: darken($bg-home, 5%);
-  background: -webkit-linear-gradient(right, #cb2d3e, #ef473a);
-  background: -o-linear-gradient(right, #cb2d3e, #ef473a);
-  background: linear-gradient(to left, #cb2d3e, #ef473a); /* Chrome 10-25, Safari 5.1-6 */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  transition-property: box-shadow;
-  transition-duration: 200ms;
-  transition-timing-function: ease-out;
-
-  &:hover {
-    //background-color: darken($bg-home, 9%);
-    color: #fff;
-    box-shadow: 0px 0px 8px 0px rgba(203, 45, 62, 0.8);
-    transition-property: box-shadow;
-    transition-duration: 200ms;
-    transition-timing-function: ease-out;
-
-  }
-}
-.btn-navi {
-  margin: 10px 8px;
-  padding-left: 24px;
-  padding-right: 24px;
 }
 /*
   VIEWINGS
