@@ -59,3 +59,30 @@
 .nav-search-center {
   width: 30%;
 }
+
+.nav-account {
+  display: flex;
+  align-items: center;
+}
+
+.account-profile-pic {
+  height: 42px;
+  width: 42px;
+  border-radius: 4px;
+  margin-right: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0px 0px 3px 1px rgba(36, 45, 51, 0.8);
+
+}
+.img-profile-pic {
+  width: 42px;
+  height: auto;
+}
+.logout {
+  font-size: 1.2em;
+  color: #f7f7f7;
+  background: transparent;
+  border: none;
+}

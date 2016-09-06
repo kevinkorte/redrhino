@@ -29,7 +29,7 @@ meteortoys:allthings
 kadira:flow-router
 kadira:blaze-layout
 
-#twbs:bootstrap
+twbs:bootstrap
 fourseven:scss
 
 aldeed:collection2
@@ -48,4 +48,3 @@ momentjs:moment
 random
 jeremy:geocomplete
 standard-minifier-css
-twbs:bootstrap
