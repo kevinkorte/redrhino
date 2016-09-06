@@ -11,7 +11,8 @@
   padding: 0;
 
   li {
-    padding-right: 12px;
+    padding: 0 8px;
+    position: relative;
   }
 }
 .new-btn-wrapper {
@@ -23,27 +24,36 @@
   height: 42px;
   width: 42px;
   border: none;
+  color: #fff;
+  margin: auto;
   @extend .gradient-sweet-morning;
-
 
   &::after {
     content: '';
     position: absolute;
-    height: 46px;
-    width: 46px;
-    background: red;
+    height: 42px;
+    width: 42px;
     z-index: -1;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    opacity: .5;
+    opacity: 0;
+    margin: auto;
+    transition: width 180ms, height 180ms;
+    transition-timing-function: ease-out;
   }
 
   &:hover::after {
-    height: 46px;
-    width: 46px;
-    background: red;
+    content: '';
+    height: 52px;
+    width: 52px;
+    margin: auto;
+    @extend .gradient-sweet-morning;
+    border-radius: 100%;
+    opacity: 0.5;
+    transition: width 180ms, height 180ms;
+    transition-timing-function: ease-out;
   }
 }
 .nav-search-center {
