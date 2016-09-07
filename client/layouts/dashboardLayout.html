@@ -1,7 +1,13 @@
 <template name="dashboardLayout">
   {{> topbar }}
+  <div class="dropdown">
+  <div class="test" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account</div>
+  <ul class="dropdown-menu" aria-labelledby="dLabel">
+    <li><a href="#">Signout</a></li>
+  </ul>
+</div>
     <div class="dashboard-fluid">
-      <div class="viewings"><button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button></div>
+      <div class="viewings"></div>
       <div class="dashboard-fixed">
         {{> upcoming }}
       </div>
