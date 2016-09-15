@@ -12,3 +12,47 @@
   z-index: 9000;
   margin-bottom: calc(100vh - 50px);
 }
+
+.hero-map-marker {
+  padding-left: 500px;
+  padding-top: 120px;
+}
+.circle {
+  position: absolute;
+  border-radius: 100%;
+
+  &.circle-white {
+  background: #fff;
+
+    &__outer {
+      display: flex;
+      align-items: center;
+      width: 80px;
+      height: 80px;
+    }
+    &__inner {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+.circle-gradient{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: 6px solid #fff;
+  background: #5C258D; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #5C258D , #4389A2); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #5C258D , #4389A2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.arrow-right {
+  width: 0;
+  height: 0;
+  border-top: 60px solid transparent;
+  border-bottom: 60px solid transparent;
+
+  border-left: 60px solid green;
+}
