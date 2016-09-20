@@ -1,20 +1,9 @@
 <template name="dashboardLayout">
-  {{> topbar }}
-  <div class="container-fluid">
-    <div class="row">
-      <div class="gradient">
-      <div class="col-md-6 col-md-offset-3">
-          <h1 class="text-center emoji-thumbup">👍</h1>
-          <p class="text-center lead text-muted">When friends add you as a follower, it will show here</p>
-      </div>
-    </div>
+  <div class="dashboard">
+    <div class="viewings">{{> topbar }}</div>
+    <div class="upcoming">
+      <div class="upcoming-head"></div>
     </div>
   </div>
-    <div class="dashboard-fluid">
-      <div class="viewings"></div>
-      <div class="dashboard-fixed">
-        {{> upcoming }}
-      </div>
-    </div>
 
 </template>
