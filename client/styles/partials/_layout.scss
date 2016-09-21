@@ -30,10 +30,9 @@ body {
   justify-content: space-between;
   align-items: center;
   padding-left: 40px;
-  padding-right: 40px;
   height: 66px;
   width: 100%;
-  box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2);
+  //box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2);
 }
 .dashboard {
   display: flex;
@@ -59,4 +58,5 @@ body {
   height: 100vh;
   background: linear-gradient(270deg, rgb(30, 155, 192), rgb(7, 48, 90));
   background: -webkit-linear-gradient(270deg, rgb(30, 155, 192), rgb(7, 48, 90));
+  background: #323450;
 }

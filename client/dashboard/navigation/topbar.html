@@ -11,15 +11,17 @@
         <input type="search" class="nav-search-input">
       </form>
     </div>
-    <div class="nav-account dropdown">
-      <div class="account-profile-pic" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-        <img src="/el_conquistador.jpg" alt="" class="img-profile-pic">
+    <div class="topbar-dark">
+      <div class="nav-account dropdown">
+        <div class="account-profile-pic" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <img src="/el_conquistador.jpg" alt="" class="img-profile-pic">
+        </div>
+        <ul class="dropdown-menu" aria-labelledby="dLabel">
+          <li><a href="/account"><i class="glyphicon glyphicon-dashboard"></i> Account</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a class="js-sign-out" href="#"><i class="glyphicon glyphicon-log-out"></i> Sign Out</a></li>
+        </ul>
       </div>
-      <ul class="dropdown-menu" aria-labelledby="dLabel">
-        <li><a href="/account"><i class="glyphicon glyphicon-dashboard"></i> Account</a></li>
-        <li role="separator" class="divider"></li>
-        <li><a class="js-sign-out" href="#"><i class="glyphicon glyphicon-log-out"></i> Sign Out</a></li>
-      </ul>
     </div>
   </div>
   {{> newEventModal }}

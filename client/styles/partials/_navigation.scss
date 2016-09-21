@@ -4,7 +4,7 @@
 //   background-color: $navbar-dark;
 // }
 .topbar {
-  background: #fff;                  
+  background: #fff;
 }
 .nav-items-left {
   display: flex;
@@ -86,6 +86,12 @@
 .dropdown-menu {
   right: 0;
   left: auto;
+}
+
+.topbar-dark {
+  flex-basis: 320px;
+  height: 100%;
+  background: #282a44;
 }
 // .logout {
 //   font-size: 1.2em;
