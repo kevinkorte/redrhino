@@ -6,40 +6,45 @@
   },
   "eslintConfig": {
     "parser": "babel-eslint",
-      "parserOptions": {
-        "allowImportExportEverywhere": true
-      },
-      "plugins": [
-        "meteor"
-      ],
-      "extends": [
-        "airbnb",
-        "plugin:meteor/recommended"
-      ],
-      "settings": {
-        "import/resolver": "meteor"
-      },
-      "env": {
-        "meteor": true,
-        "node": true,
-        "browser": true
-      },
-      "rules": {
-        "semi": [2, "never"]
-      },
-      "globals": {
-        "FlowRouter": false
-      }
+    "parserOptions": {
+      "allowImportExportEverywhere": true
+    },
+    "plugins": [
+      "meteor"
+    ],
+    "extends": [
+      "airbnb",
+      "plugin:meteor/recommended"
+    ],
+    "settings": {
+      "import/resolver": "meteor"
+    },
+    "env": {
+      "meteor": true,
+      "node": true,
+      "browser": true
+    },
+    "rules": {
+      "semi": [
+        2,
+        "never"
+      ]
+    },
+    "globals": {
+      "FlowRouter": false
+    }
   },
   "dependencies": {
     "meteor-node-stubs": "~0.2.0"
   },
   "devDependencies": {
     "babel-eslint": "^6.1.2",
-    "eslint": "^3.3.1",
+    "eslint": "^3.5.0",
     "eslint-config-airbnb": "^10.0.1",
     "eslint-import-resolver-meteor": "^0.3.3",
-    "eslint-plugin-import": "^1.14.0",
-    "eslint-plugin-meteor": "^4.0.0"
+    "eslint-plugin-import": "^1.15.0",
+    "eslint-plugin-jsx-a11y": "^2.2.2",
+    "eslint-plugin-meteor": "^4.0.0",
+    "eslint-plugin-react": "^6.3.0"
   }
 }
