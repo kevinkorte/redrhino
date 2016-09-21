@@ -6,12 +6,14 @@
 .topbar {
   background: #fff;
 }
-.nav-items-left {
+.nav-items-left,
+.nav-items-account {
   display: flex;
   align-items: center;
   list-style: none;
   margin: 0;
   padding: 0;
+  height: 100%;
 
   li {
     padding: 0 8px;
@@ -72,7 +74,7 @@
 .account-profile-pic {
   height: 42px;
   width: 42px;
-  border-radius: 4px;
+  border-radius: 100%;
   overflow: hidden;
   cursor: pointer;
   position: relative;
@@ -89,9 +91,25 @@
 }
 
 .topbar-dark {
+  display: flex;
   flex-basis: 320px;
   height: 100%;
   background: #282a44;
+  align-items: center;
+  justify-content: space-around;
+}
+.btn-new {
+  height: 42px;
+  padding-left: 24px;
+  padding-right: 24px;
+  color: rgba(255,255,255,0.8);
+  background: #4CB8C4; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #4CB8C4 , #3CD3AD); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #4CB8C4 , #3CD3AD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  &:hover {
+    color: #fff;
+  }
 }
 // .logout {
 //   font-size: 1.2em;
