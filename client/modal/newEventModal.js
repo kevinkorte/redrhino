@@ -8,8 +8,8 @@ Template.newEventModal.onRendered(function() {
 
 Template.newEventModal.events({
   'submit .form-new-viewing'(event, template) {
-    console.log(event);
-    // event.preventDefault();
+    event.preventDefault();
+    console.log(event.target.address.val);
     // var address = event.target.address.val;
     // var lat = event.target.lat.val;
     // var lng = event.target.lng.val;
