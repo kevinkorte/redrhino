@@ -7,7 +7,11 @@
         <h4 class="modal-title">Create a New Event</h4>
       </div>
       <div class="modal-body">
-        <input class="form-control standard-input js-geocomplete-input" type="search">
+        <form>
+          <input type="input" name="full-address" class="form-control standard-input js-geocomplete-input">
+          <input type="hidden" name="lat">
+          <input type="hidden" name="lng">
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
