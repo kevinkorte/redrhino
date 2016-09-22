@@ -4,4 +4,15 @@ Template.newEventModal.onRendered(function() {
       $('.js-geocomplete-input').geocomplete({ details: "form" })
     }
   })
+});
+
+Template.newEventModal.events({
+  'submit .form-new-viewing'(event, template) {
+    console.log(event);
+    // event.preventDefault();
+    // var address = event.target.address.val;
+    // var lat = event.target.lat.val;
+    // var lng = event.target.lng.val;
+    // Viewings.insert({address: address, lat: lat, lng: lng}, function(error, result) { console.log(result) });
+  }
 })
