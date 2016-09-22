@@ -4,3 +4,14 @@
 .modal-footer {
   border-top: none;
 }
+
+/*
+Google's default z-index here is 1000
+Bootstrap's default z-index here is 1050
+Overrides Google's default container class
+to z-index 1100 so it sits on top of the
+overlay
+*/
+.pac-container {
+  z-index: 1100;
+}
