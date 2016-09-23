@@ -9,10 +9,10 @@ Template.newEventModal.onRendered(function() {
 Template.newEventModal.events({
   'submit .form-new-viewing'(event, template) {
     event.preventDefault();
-    console.log(event.target.address.val);
-    // var address = event.target.address.val;
-    // var lat = event.target.lat.val;
-    // var lng = event.target.lng.val;
-    // Viewings.insert({address: address, lat: lat, lng: lng}, function(error, result) { console.log(result) });
+    console.log(event.target[0].value);
+    var address = event.target[0].value;
+    var lat = event.target[1].value;
+    var lng = event.target[2].value;
+    Viewings.insert({address: address, lat: lat, lng: lng}, function(error, result) { console.log(error) });
   }
 })
