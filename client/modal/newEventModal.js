@@ -9,7 +9,6 @@ Template.newEventModal.onRendered(function() {
 Template.newEventModal.events({
   'submit .form-new-viewing'(event, template) {
     event.preventDefault();
-    console.log(event.target[0].value);
     var address = event.target[0].value;
     var lat = event.target[1].value;
     var lng = event.target[2].value;
