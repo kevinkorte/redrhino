@@ -35,25 +35,40 @@ Meteor.methods({
                   password: customer.password,
                   name: customer.name,
                 });
+
                 var subscription = {
                   customerId: customerId,
                   subscription: {
                     plan: {
-                      name: customer.plan
+                      name_id: customer.plan,
+                      name_retail: response.plan.name,
+                      cost: response.plan.amount,
+                      currency: response.plan.currency,
+                      interval: response.plan.interval
                     },
+                    subscription_id: response.id,
+                    delinquent: stripeCustomer.delinquent,
+                    created: response.created,
+                    current_period_end: response.current_period_end,
+                    current_period_start: response.current_period_start,
+                    status: response.status,
+                    trial_end: response.trial_end,
+                    trial_start: response.trial_start
                   }
-                };// end subscription var
+                }
+                console.log(user);
                 Meteor.users.update(user, {
-                  $set: subscription
+                  $set: {kevin: "kevin"}
                 }, function(error, response){
                   if ( error ) {
                     console.log(error);
                   } else {
                     newCustomer.return(user);
+                    console.log(subscription);
                   }
                 });// end Meteor.users.update
               } catch( exception ) {
-                newCustomer.return(exception);
+                  newCustomer.return(exception);
               }// end catch
             }// end if statement
           });// end stripe create subscription call
