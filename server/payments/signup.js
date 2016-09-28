@@ -33,7 +33,9 @@ Meteor.methods({
                 var user = Accounts.createUser({
                   email: customer.emailAddress,
                   password: customer.password,
-                  name: customer.name,
+                  profile: {
+                    name: customer.name,
+                  }
                 });
 
                 var subscription = {
@@ -57,28 +59,30 @@ Meteor.methods({
                   }
                 }
                 console.log(user);
+                // Perform an update on our new user.
                 Meteor.users.update(user, {
-                  $set: {kevin: "kevin"}
+                  $set: subscription
                 }, function(error, response){
-                  if ( error ) {
+                  if (error){
                     console.log(error);
                   } else {
+                    // Once the subscription data has been added, return to our Future.
                     newCustomer.return(user);
-                    console.log(subscription);
                   }
-                });// end Meteor.users.update
-              } catch( exception ) {
-                  newCustomer.return(exception);
-              }// end catch
-            }// end if statement
-          });// end stripe create subscription call
-        }// ends if
-      });// ends stripecreatecustomer
+                });
+              } catch(exception) {
+                newCustomer.return(exception);
+              }
+            }
+          });
+        }
+      });
+      // Return our newCustomer Future.
       return newCustomer.wait();
-    } else { // customer lookup came back true
+    } else {
       throw new Meteor.Error('customer-exists', 'Sorry, that customer email already exists!');
     }
-  }, // ends create trial customer method
+  },
   stripeCreateCustomer: function(email){
     check(email, String);
     let stripeCustomer = new Future();
