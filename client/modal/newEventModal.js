@@ -12,6 +12,8 @@ Template.newEventModal.events({
     var address = event.target[0].value;
     var lat = event.target[1].value;
     var lng = event.target[2].value;
-    Viewings.insert({address: address, lat: lat, lng: lng}, function(error, result) { console.log(error) });
+    Viewings.insert({address: address, lat: lat, lng: lng}, function(error, result) {
+      FlowRouter.go('/'+Meteor.userId()+'/'+result);
+    });
   }
 })
