@@ -6,17 +6,21 @@ Template.eventLayout.helpers({
   },
   exampleMapOptions: function() {
     // Make sure the maps API has loaded
-    if (GoogleMaps.loaded()) {
-      var id = FlowRouter.getParam('id');
-      console.log(id);
-      var Lat = Viewings.findOne(id).lat;
-      var Lng = Viewings.findOne().lng;
+    var event = Viewings.findOne();
+    if (GoogleMaps.loaded() && event) {
+      // Map initialization options
+      // var id = FlowRouter.getParam('id');
+
+      var eventLat = Number(event.lat);
+      var eventLng = Number(event.lng);
+      console.log(typeof eventLat);
+      console.log(eventLat, eventLng);
       return {
-        center: new google.maps.LatLng(Lat, Lng),
+        center: new google.maps.LatLng(eventLat, eventLng),
         zoom: 17
       };
     }
-  }
+  },
 });
 
 Template.eventLayout.onRendered(function() {
@@ -27,5 +31,6 @@ Template.eventLayout.onRendered(function() {
       position: map.options.center,
       map: map.instance
     });
+    console.log(marker);
   });
 });
