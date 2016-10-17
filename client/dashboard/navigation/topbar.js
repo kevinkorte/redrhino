@@ -3,6 +3,6 @@ Template.topbar.events({
     console.log(event);
   },
   'click .js-sign-out'(event) {
-    Meteor.logout;
+    Meteor.logout();
   }
 })
