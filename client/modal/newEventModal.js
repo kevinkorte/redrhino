@@ -13,6 +13,7 @@ Template.newEventModal.events({
     var lat = event.target[1].value;
     var lng = event.target[2].value;
     Viewings.insert({address: address, lat: lat, lng: lng}, function(error, result) {
+      $('.modal-backdrop').remove();
       FlowRouter.go('/'+Meteor.userId()+'/'+result);
     });
   }
