@@ -48,3 +48,5 @@ momentjs:moment
 random
 jeremy:geocomplete
 standard-minifier-css
+email
+meteorhacks:ssr
