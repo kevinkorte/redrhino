@@ -59,6 +59,7 @@ Meteor.methods({
                   }
                 }
                 console.log(user);
+                Meteor.call('sendVerificationLink', user);
                 // Perform an update on our new user.
                 Meteor.users.update(user, {
                   $set: subscription
