@@ -1,8 +1,11 @@
 Meteor.methods({
-  sendVerificationLink() {
-    let userId = Meteor.userId();
-    console.log(userId);
-    if ( userId ) {
+  sendVerificationLink(userId) {
+    if (userId) {
+      console.log('send no lookup');
+      return Accounts.sendVerificationEmail( userId );
+    } else {
+      console.log('send lookup');
+      let userId = Meteor.userId();
       return Accounts.sendVerificationEmail( userId );
     }
   }
