@@ -1,4 +1,7 @@
 <template name="topbar">
+  {{#unless currentUser.emails.[0].verified}}
+    <p class="alert alert-warning">You need to verify your email address before using GoDunk. <a href="#" class="resend-verification-link">Resend verification link</a>.</p>
+  {{else}}
   <div class="topbar">
     <div class="nav-items-left-wrapper">
       <ul class="nav-items-left">
@@ -26,4 +29,6 @@
     </div>
   </div>
   {{> newEventModal }}
+
+  {{/unless}}
 </template>
