@@ -55,6 +55,11 @@ Template.signupForm.rendered = function(){
                  alert(error.reason);
                 submitButton.button('reset')
               } else {
+                Meteor.call( 'sendVerificationLink', ( error, response ) => {
+                  if ( error ) {
+                    console.log(error);
+                  }
+                });
                 FlowRouter.go('/home')
                 submitButton.button('reset')
               } // ends if statement
