@@ -1,7 +1,12 @@
 <template name="upcoming">
   <div class="upcoming">
-    {{#each viewings}}
-      {{address}}
+    <div class="list-group">
+      {{#each viewings}}
+        <a href="/{{author}}/{{_id}}" class="list-group-item">
+          <h4 class="list-group-item-heading">{{address}}</h4>
+          <!-- <p class="list-group-item-text">...</p> -->
+        </a>
       {{/each}}
+    </div>
   </div>
 </template>

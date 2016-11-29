@@ -2,19 +2,21 @@ Template.eventLayout.helpers({
   viewing: ()=> {
       var id = FlowRouter.getParam('id');
       return Viewings.findOne({_id: id});
-
+  },
+  agent() {
+    return Session.get("agent");
   },
   exampleMapOptions: function() {
     // Make sure the maps API has loaded
-    var event = Viewings.findOne();
+    var id = FlowRouter.getParam('id');
+    var event = Viewings.findOne({_id: id});
+
     if (GoogleMaps.loaded() && event) {
       // Map initialization options
       // var id = FlowRouter.getParam('id');
 
       var eventLat = Number(event.lat);
       var eventLng = Number(event.lng);
-      console.log(typeof eventLat);
-      console.log(eventLat, eventLng);
       return {
         center: new google.maps.LatLng(eventLat, eventLng),
         zoom: 17
@@ -31,6 +33,13 @@ Template.eventLayout.onRendered(function() {
       position: map.options.center,
       map: map.instance
     });
-    console.log(marker);
+  });
+  var id = FlowRouter.getParam('id');
+  Meteor.call('findUserById', id, function(error,response){
+    if(error) {
+      console.log(error.reason)
+    } else {
+      Session.set("agent", response);
+    }
   });
 });

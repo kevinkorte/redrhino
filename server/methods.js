@@ -8,5 +8,16 @@ Meteor.methods({
       let userId = Meteor.userId();
       return Accounts.sendVerificationEmail( userId );
     }
+  },
+  findUserById(id) {
+    check(id, String);
+    if (id) {
+      let event = Viewings.findOne(id);
+      let userId = event.author;
+      return Meteor.users.findOne(userId);
+    } else {
+      //need better error handling here
+      console.log('error')
+    }
   }
 });
