@@ -16,6 +16,9 @@ ViewingSchema = new SimpleSchema({
     autoValue: function() {
       return this.userId
     }
+  },
+  "followers.$.email": {
+    type: String
   }
 })
 

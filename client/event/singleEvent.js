@@ -43,3 +43,20 @@ Template.eventLayout.onRendered(function() {
     }
   });
 });
+
+Template.eventLayout.events({
+  'submit .add-follower-email'(event) {
+    event.preventDefault();
+    let followerEmail = event.target.email.value;
+    let authorId = FlowRouter.getParam('author');
+    let id = FlowRouter.getParam('id');
+    Meteor.call('prepareEmailToFollower', followerEmail, authorId, id, function(error,response) {
+      if (error) {
+        //better error handling here
+        console.log(error.reason);
+      } else {
+        console.log(response);
+      }
+    })
+  }
+})
