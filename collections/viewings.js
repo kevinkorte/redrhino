@@ -17,8 +17,8 @@ ViewingSchema = new SimpleSchema({
       return this.userId
     }
   },
-  "followers.$.email": {
-    type: String
+  "followersEmail": {
+    type: [String]
   }
 })
 

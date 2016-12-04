@@ -10,11 +10,9 @@
   Return to Dashboard
 </a>
         <p>{{viewing.address}}</p>
-        {{#if currentUser}}
         <div class="agent">
           {{agent.profile.name}}
         </div>
-        {{/if}}
         <form class="form-inline add-follower-email">
           <div class="form-group">
             <label for="follower-email-address">Email</label>
@@ -22,6 +20,14 @@
           </div>
           <button type="submit" class="btn btn-default">Send invitation</button>
         </form>
+        <button class="ui primary button js-check-in">Check In</button>
+        {{#each events}}
+          {{lat}}
+          {{#each this.result}}
+          {{formattedAddress}}
+          {{/each}}
+          {{unixToTimeAgo timestamp}}
+        {{/each}}
       </div>
     </div>
   </div>

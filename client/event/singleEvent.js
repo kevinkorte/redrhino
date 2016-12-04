@@ -6,6 +6,13 @@ Template.eventLayout.helpers({
   agent() {
     return Session.get("agent");
   },
+  events() {
+    let events = Events.find();
+
+    if ( events ) {
+      return events;
+    }
+  },
   exampleMapOptions: function() {
     // Make sure the maps API has loaded
     var id = FlowRouter.getParam('id');
@@ -58,5 +65,25 @@ Template.eventLayout.events({
         console.log(response);
       }
     })
+  },
+  'click .js-check-in'(event) {
+    $('.js-check-in').addClass('loading');
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        let lat = position.coords.latitude;
+        let lng = position.coords.longitude;
+        let accuracy = position.coords.accuracy;
+        let timestamp = position.timestamp;
+        let id = FlowRouter.getParam('id');
+        Meteor.call('addEvent', lat, lng, accuracy, timestamp, id, function(error, response) {
+          if ( error && error.error === "add-event" ) {
+            Bert.alert( error.reason, "warning" );
+            $('.js-check-in').removeClass('loading');
+          } else {
+            $('.js-check-in').removeClass('loading');
+          }
+        });
+      });
+    }
   }
 })

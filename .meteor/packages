@@ -54,3 +54,6 @@ shell-server
 semantic:ui
 juliancwirko:postcss
 less
+dburles:google-maps
+mdg:geolocation
+aldeed:geocoder
