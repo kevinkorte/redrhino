@@ -1,4 +1,5 @@
 <template name="eventLayout">
+  <script src=""></script>
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-6">
@@ -13,6 +14,25 @@
         <div class="agent">
           {{agent.profile.name}}
         </div>
+        <form>
+          <div class="form-group">
+              <div class='input-group date' id='datetimepicker6'>
+                  <input type='text' class="form-control" />
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+          </div>
+          <div class="form-group">
+              <div class='input-group date' id='datetimepicker7'>
+                  <input type='text' class="form-control" />
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+          </div>
+
+        </form>
         <form class="form-inline add-follower-email">
           <div class="form-group">
             <label for="follower-email-address">Email</label>
@@ -22,11 +42,38 @@
         </form>
         <button class="ui primary button js-check-in">Check In</button>
         {{#each events}}
-          {{lat}}
-          {{#each this.result}}
-          {{formattedAddress}}
-          {{/each}}
-          {{unixToTimeAgo timestamp}}
+        <div class="ui feed">
+          <div class="event">
+            <div class="label">
+              <i class="marker icon"></i>
+            </div>
+            <div class="content">
+              <div class="date">
+                {{unixToTimeAgo timestamp}}
+              </div>
+              <div class="summary">
+                {{#each this.result}}
+                  {{agent.profile.name}} checked in near {{formattedAddress}}
+                {{/each}}
+                <div class="ui icon button" data-tooltip="Latitude: {{lat}} Longitude: {{lng}}" data-position="left center">
+        <i class="world icon"></i>
+      </div>
+            </div>
+          <div class="extra text">
+
+  <div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="{{accuracy}}" aria-valuemin="0" aria-valuemax="100" style="width: {{accuracy}}%;">
+    <span class="sr-only">60% Complete</span>
+  </div>
+</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
         {{/each}}
       </div>
     </div>

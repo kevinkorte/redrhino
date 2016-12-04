@@ -8,6 +8,6 @@ Template.upcoming.onRendered(function() {
 
 Template.upcoming.helpers({
   viewings: function() {
-    return Viewings.find({});
+    return Viewings.find({author: Meteor.userId()});
   }
 })

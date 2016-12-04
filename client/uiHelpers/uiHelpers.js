@@ -12,6 +12,6 @@ Template.registerHelper( 'agent', ( agentId ) => {
 
 Template.registerHelper( 'unixToTimeAgo', (timestamp) => {
   if (timestamp) {
-    return moment(timestamp).fromNow();
+    return moment(timestamp).calendar();
   }
 });

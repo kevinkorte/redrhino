@@ -7,7 +7,7 @@ Template.eventLayout.helpers({
     return Session.get("agent");
   },
   events() {
-    let events = Events.find();
+    let events = Events.find({}, {sort: {timestamp: -1}});
 
     if ( events ) {
       return events;
@@ -32,8 +32,12 @@ Template.eventLayout.helpers({
   },
 });
 
-Template.eventLayout.onRendered(function() {
+Template.eventLayout.onCreated(function() {
   // We can use the `ready` callback to interact with the map API once the map is ready.
+
+});
+
+Template.eventLayout.onRendered(function() {
   GoogleMaps.ready('exampleMap', function(map) {
     // Add a marker to the map once it's ready
     var marker = new google.maps.Marker({
@@ -49,6 +53,18 @@ Template.eventLayout.onRendered(function() {
       Session.set("agent", response);
     }
   });
+  $(function () {
+        $('#datetimepicker6').datetimepicker();
+        $('#datetimepicker7').datetimepicker({
+            useCurrent: false //Important! See issue #1075
+        });
+        $("#datetimepicker6").on("dp.change", function (e) {
+            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker7").on("dp.change", function (e) {
+            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+        });
+    });
 });
 
 Template.eventLayout.events({

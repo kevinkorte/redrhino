@@ -10,3 +10,19 @@ Meteor.publish('viewings.single', function(id) {
     check(id, String);
     return Viewings.find({_id: id});
 });
+
+Meteor.publish('myDashboard', function() {
+  var user = Meteor.users.findOne(this.userId);
+  return Viewings.find({"followersEmail": user.emails[0].address})
+});
+
+Meteor.publish('myUpcoming', function() {
+  // var user = Meteor.users.findOne(this.userId);
+  return Viewings.find({author: this.userId});
+});
+
+Meteor.publish('events', function(id) {
+  check(id, String);
+  console.log(id);
+  return Events.find({viewingId: id}, {sort: {timestamp: -1}});
+});

@@ -2,6 +2,9 @@
     {{> topbar }}
   <div class="dashboard">
     <div class="viewings">
+      {{#each viewings}}
+        {{address}}
+      {{/each}}
 
       <div class="ui card">
         <div class="content">

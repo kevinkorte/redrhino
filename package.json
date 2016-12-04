@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "body-parser": "^1.15.2",
+    "flatpickr": "^2.2.3",
     "meteor-node-stubs": "~0.2.0"
   },
   "devDependencies": {
@@ -51,7 +52,11 @@
   },
   "postcss": {
     "plugins": {
-      "autoprefixer": {"browsers": ["last 2 versions"]}
+      "autoprefixer": {
+        "browsers": [
+          "last 2 versions"
+        ]
+      }
     }
   }
 }
