@@ -53,18 +53,141 @@ Template.eventLayout.onRendered(function() {
       Session.set("agent", response);
     }
   });
-  $(function () {
-        $('#datetimepicker6').datetimepicker();
-        $('#datetimepicker7').datetimepicker({
-            useCurrent: false //Important! See issue #1075
-        });
-        $("#datetimepicker6").on("dp.change", function (e) {
-            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
-        });
-        $("#datetimepicker7").on("dp.change", function (e) {
-            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
-        });
+  let loadTimes = (id) => {
+    return new Promise( (resolve, reject) => {
+      Meteor.call('getStartTime', id, function(error, response) {
+        if (error) {
+          console.log(error.response);
+        } else if (response.startTime) {
+          console.log(response);
+          $('#datetimepickerStart').datetimepicker({
+            defaultDate: response.startTime
+          });
+          let startTime1 = response.startTime;
+          console.log('calling get end time');
+          Meteor.call('getEndTime', id, function(error, response) {
+            if (error) {
+              console.log('get end time error');
+              reject(error);
+            } else if (response.endTime) {
+              console.log('response end time');
+              $('#datetimepickerEnd').datetimepicker({
+                defaultDate: response.endTime
+              });
+              resolve(startTime1);
+            } else {
+              console.log('response no time');
+              $('#datetimepickerEnd').datetimepicker({
+                useCurrent: false //Important! See issue #1075
+              });
+              resolve(startTime1);
+            }
+          });
+        } else {
+          $('#datetimepickerStart').datetimepicker({});
+          Meteor.call('getEndTime', id, function(error, response) {
+            if (error) {
+              reject(error);
+            } else if (response.endTime) {
+              console.log('response endTime');
+              $('#datetimepickerEnd').datetimepicker({
+                defaultDate: response.endTime
+              });
+              resolve(response);
+            } else {
+              console.log('else');
+              $('#datetimepickerEnd').datetimepicker({
+                useCurrent: false //Important! See issue #1075
+              });
+              resolve(response);
+            }
+          });
+        }
+      });
     });
+  }
+  // let id = FlowRouter.getParam('id');
+  loadTimes(id).then((response) => {
+    let thisDate = moment(response);
+    console.log(thisDate);
+    $('#datetimepickerEnd').data("DateTimePicker").minDate(thisDate);
+    $("#datetimepickerStart").on("dp.change", function (e) {
+      $('#datetimepickerEnd').data("DateTimePicker").minDate(e.date);
+      let updateStartDateTime = e.date._d;
+      Meteor.call('updateStartDateTime',id, updateStartDateTime, function(error, response) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('datetimepickerStart on change');
+        }
+      });
+    });
+    $("#datetimepickerEnd").on("dp.change", function (e) {
+      $('#datetimepickerStart').data("DateTimePicker").minDate(e.date);
+      let updateEndDateTime = e.date._d;
+      Meteor.call('updateEndDateTime',id, updateEndDateTime, function(error, response) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('datetimepickerEnd on change',response);
+        }
+      });
+    });
+  }).catch( (error) => {
+    console.log(error);
+  });
+
+//   $(function () {
+//         let id = FlowRouter.getParam('id');
+//         Meteor.call('getStartTime', id, function(error, response) {
+//           if (error) {
+//             console.log(error.response);
+//           } else if (response.startTime) {
+//             console.log(response);
+//             $('#datetimepickerStart').datetimepicker({
+//               defaultDate: response.startTime
+//             });
+//           } else {
+//             $('#datetimepickerStart').datetimepicker({});
+//           }
+//         });
+//         Meteor.call('getEndTime', id, function(error, response) {
+//           if (error) {
+//             console.log(error.response);
+//           } else if (response.endTime) {
+//             console.log(response);
+//             $('#datetimepickerEnd').datetimepicker({
+//                 useCurrent: false, //Important! See issue #1075
+//                 defaultDate: response.endTime
+//             });
+//
+//           } else {
+//             console.log('that');
+//             $('#datetimepickerEnd').datetimepicker({
+//                 useCurrent: false //Important! See issue #1075
+//             });
+//           }
+//         });
+//
+//         $("#datetimepickerStart").on("dp.change", function (e) {
+//     $('#datetimepickerEnd').data("DateTimePicker").minDate(e.date);
+// });
+
+        // $("#datetimepickerStart").on("dp.change", function (e) {
+        //   let dateTime = e.date._d;
+        //   let id = FlowRouter.getParam('id');
+        //   console.log(dateTime, "dateTime");
+        //   // Meteor.call('updateDateTime', id, dateTime, function(error,response) {
+        //   //   if (error) {
+        //   //     console.log(error.reason);
+        //   //   }
+        //   // });
+        //   $('#datetimepickerEnd').data("DateTimePicker").minDate(e.date);
+        // });
+        // $("#datetimepickerEnd").on("dp.change", function (e) {
+        //     $('#datetimepickerStart').data("DateTimePicker").maxDate(e.date);
+        // });
+    // });
 });
 
 Template.eventLayout.events({

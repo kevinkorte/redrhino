@@ -23,7 +23,7 @@
     "image": false,
     "input": true,
     "item": false,
-    "label": false,
+    "label": true,
     "list": false,
     "loader": false,
     "menu": false,

@@ -95,5 +95,38 @@ Meteor.methods({
       });
     });
     // Events.update({result}, {filter: false, validate: false});
+  },
+  updateStartDateTime(id, dateTime) {
+    check(id, String);
+    check(dateTime, Date);
+    console.log(dateTime);
+    Viewings.update(id, {$set: {startTime: dateTime}}, function(error, response) {
+      if (error) {
+        return error;
+      } else {
+        return response;
+      }
+    })
+  },
+  updateEndDateTime(id, dateTime) {
+    check(id, String);
+    check(dateTime, Date);
+    console.log(dateTime);
+    Viewings.update(id, {$set: {endTime: dateTime}}, function(error, response) {
+      if (error) {
+        return error;
+      } else {
+        return response;
+      }
+    })
+  },
+  getStartTime(id) {
+    check(id, String);
+    return Viewings.findOne(id, {fields: {startTime: 1}});
+  },
+  getEndTime(id) {
+    check(id, String);
+    console.log('get end time', id);
+    return Viewings.findOne(id, {fields: {endTime: 1}});
   }
 });

@@ -11,6 +11,12 @@ ViewingSchema = new SimpleSchema({
   lng: {
     type: String,
   },
+  startTime: {
+    type: Date
+  },
+  endTime: {
+    type: Date
+  },
   author: {
     type: String,
     autoValue: function() {
