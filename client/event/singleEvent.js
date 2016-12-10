@@ -106,7 +106,6 @@ Template.eventLayout.onRendered(function() {
       });
     });
   }
-  // let id = FlowRouter.getParam('id');
   loadTimes(id).then((response) => {
     let thisDate = moment(response);
     console.log(thisDate);
@@ -123,16 +122,16 @@ Template.eventLayout.onRendered(function() {
       });
     });
     $("#datetimepickerEnd").on("dp.change", function (e) {
-      $('#datetimepickerStart').data("DateTimePicker").minDate(e.date);
+      console.log('end');
       let updateEndDateTime = e.date._d;
-      Meteor.call('updateEndDateTime',id, updateEndDateTime, function(error, response) {
+      Meteor.call('updateEndDateTime', id, updateEndDateTime, function(error, response) {
         if (error) {
           console.log(error);
         } else {
-          console.log('datetimepickerEnd on change',response);
+          console.log('update end time');
         }
-      });
-    });
+      })
+    })
   }).catch( (error) => {
     console.log(error);
   });
