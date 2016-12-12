@@ -1,17 +1,12 @@
-.accounts-profile-img {
-
-  & img {
-    width: 100%;
-    height: auto;
-  }
+.user-accounts-info {
+  display: flex;
+  align-items: flex-end;
 }
-
-.accounts-nav-row {
-  border-bottom: 1px solid #d3d3d3;
-  margin-bott: 40px;
-  padding: 18px 0;
+.user-name,
+.user-join-date {
+  margin: 0;
 }
-
-.your-dashboard-anchor {
-  border: 1px solid #d3d3d3;
+.user-join-date {
+  flex-grow: 1;
+  text-align: right;
 }

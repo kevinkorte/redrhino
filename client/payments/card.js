@@ -30,3 +30,11 @@ Template.card.events({
     });
   }
 });
+
+Template.card.helpers({
+  user: function() {
+    if (Meteor.user()) {
+      return Meteor.user();
+    }
+  }
+});

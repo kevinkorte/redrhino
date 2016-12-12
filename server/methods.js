@@ -25,6 +25,9 @@ Meteor.methods({
     check(authorId, String);
     check(id, String);
     let emailAlreadyExist = Meteor.users.find({"emails.address": followerEmail}, {limit: 1}).count()>0;
+    /*
+    RETURNING TRUE BECAUSE USER IS THERE ON ANOTHER JOB, BUT NOT ON THIS JOB
+    */
     if (!emailAlreadyExist) {
       Viewings.update(id, {$addToSet: {followersEmail: followerEmail}});
     }

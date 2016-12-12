@@ -3,20 +3,36 @@
     <div class="row accounts-nav-row">
       {{> accountsMenu }}
     </div>
-    <div class="row">
-      <div class="col-md-3">
-        <div class="accounts-profile-img">
-          <img class="img-thumbnail" src="/el_conquistador.jpg" alt="">
+    {{#with currentUser}}
+      <div class="row">
+        <div class="col-md-12 user-accounts-info">
+          {{> avatar user=this size="account" shape="rounded"}}
+            <!-- <img class="img-thumbnail" src="/el_conquistador.jpg" alt=""> -->
+            <h1 class="user-name">{{profile.firstName}} {{profile.lastName}}</h1>
+            <h1 class="user-join-date"><small>Subtext for header</small></h1>
         </div>
       </div>
-      <div class="col-md-9">
-        <ul class="nav nav-tabs">
-          <li role="presentation" class="active"><a href="#">Home</a></li>
-          <li role="presentation"><a href="#">Profile</a></li>
-          <li role="presentation"><a href="#">Messages</a></li>
-        </ul>
-        {{> Template.dynamic template=main}}
+      {{/with}}
+      <div class="row">
+        <div class="col-md-4">
+          <div class="ui secondary vertical menu">
+            <a class="active item">
+              Upcoming
+            </a>
+            <a class="item" href="/account/card">
+              Card
+            </a>
+            <a class="item">
+              Invoices
+            </a>
+            <a class="item">
+              Account
+            </a>
+          </div>
+        </div>
+        <div class="col-md-8">
+          {{> Template.dynamic template=main}}
+        </div>
       </div>
-    </div>
   </div>
 </template>

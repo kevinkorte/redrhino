@@ -37,7 +37,8 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "flatpickr": "^2.2.3",
-    "meteor-node-stubs": "~0.2.0"
+    "meteor-node-stubs": "~0.2.0",
+    "payment": "^2.1.4"
   },
   "devDependencies": {
     "babel-eslint": "^6.1.2",
