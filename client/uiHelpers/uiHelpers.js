@@ -15,3 +15,8 @@ Template.registerHelper( 'unixToTimeAgo', (timestamp) => {
     return moment(timestamp).calendar();
   }
 });
+Template.registerHelper('joinDate', (date) => {
+  if (date) {
+    return moment(date).format("MMM D, YYYY");
+  }
+})

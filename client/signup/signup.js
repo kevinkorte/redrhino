@@ -34,6 +34,7 @@ Template.signupForm.rendered = function(){
         password: $('[name="password"]').val(),
         plan: 'basic-monthly-1'
       }
+
       // Bootstrap specific to show button loading text
       const submitButton = $('input[type="submit"]').button('loading')
 

@@ -21,6 +21,7 @@ Meteor.methods({
           // better error handling here?
           console.log(error);
         } else {
+          console.log(stripeCustomer);
           let customerId = stripeCustomer.id,
               plan       = customer.plan;
 
@@ -29,16 +30,19 @@ Meteor.methods({
               // better error handling here?
               console.log(error);
             } else {
+              console.log(response,'stripe create sub');
               try {
+                console.log(customer.emailAddress);
                 var user = Accounts.createUser({
                   email: customer.emailAddress,
                   password: customer.password,
                   profile: {
-                    name: customer.name,
+                    name: customer.name
                   }
                 });
-
+                console.log(user);
                 var subscription = {
+                  createdAt: new Date(),
                   customerId: customerId,
                   subscription: {
                     plan: {
@@ -58,7 +62,8 @@ Meteor.methods({
                     trial_start: response.trial_start
                   }
                 }
-                console.log(user);
+                var createdAt = {createdAt: new Date()};
+                console.log(createdAt);
                 // Perform an update on our new user.
                 Meteor.users.update(user, {
                   $set: subscription

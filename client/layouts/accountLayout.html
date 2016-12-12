@@ -4,16 +4,16 @@
       {{> accountsMenu }}
     </div>
     {{#with currentUser}}
-      <div class="row">
+      <div class="row user-account-header">
         <div class="col-md-12 user-accounts-info">
           {{> avatar user=this size="account" shape="rounded"}}
             <!-- <img class="img-thumbnail" src="/el_conquistador.jpg" alt=""> -->
-            <h1 class="user-name">{{profile.firstName}} {{profile.lastName}}</h1>
-            <h1 class="user-join-date"><small>Subtext for header</small></h1>
+            <h1 class="user-name">{{profile.name}}</h1>
+            <h1 class="user-join-date"><small>Joined on {{joinDate createdAt}}</small></h1>
         </div>
       </div>
       {{/with}}
-      <div class="row">
+      <div class="row account-page">
         <div class="col-md-4">
           <div class="ui secondary vertical menu">
             <a class="active item">

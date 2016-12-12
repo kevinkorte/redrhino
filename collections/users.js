@@ -30,3 +30,12 @@
 //     return true;
 //   }
 // });
+
+// Schema = {};
+//
+// Schema.User = new SimpleSchema({
+//   createdAt: {
+//         type: Date
+//     }
+// });
+// Meteor.users.attachSchema(Schema.User);

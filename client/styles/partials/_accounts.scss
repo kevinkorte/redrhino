@@ -6,7 +6,18 @@
 .user-join-date {
   margin: 0;
 }
+.user-name {
+  color: #dcdcdc;
+  padding-left: 40px;
+}
 .user-join-date {
   flex-grow: 1;
   text-align: right;
+}
+.user-account-header {
+  background: #303535;
+  padding: 30px 0;
+}
+.account-page {
+  padding-top: 40px;
 }
