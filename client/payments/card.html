@@ -1,6 +1,6 @@
 <template name="card">
-  <h2 class="ui header">
-    <i class="payment icon"></i>
+  <h2 class="ui center aligned icon header">
+    <i class="circular payment icon"></i>
     <div class="content">Payment Options</div>
   </h2>
   <div class="ui padded segment">
@@ -12,6 +12,11 @@
       {{{cardIcon user.subscription.payment.card.type}}}
     </div>
   </div>
+  <div class="ui section divider"></div>
+  <h4 class="ui header">
+    Update Your Card
+    <div class="sub header">Update your card here - it will replace your current payment method</div>
+  </h4>
   <div class="ui attached message">
   <div class="header">
     <i class="lock icon"></i>

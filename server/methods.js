@@ -131,5 +131,10 @@ Meteor.methods({
     check(id, String);
     console.log('get end time', id);
     return Viewings.findOne(id, {fields: {endTime: 1}});
+  },
+  updateProfileName(user, profileName) {
+    check(user, String);
+    check(profileName, String);
+    Meteor.users.update(user, {$set: {'profile.name': profileName}});
   }
 });
