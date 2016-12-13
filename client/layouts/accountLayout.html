@@ -15,11 +15,13 @@
       {{/with}}
       <div class="row account-page">
         <div class="col-md-4">
+
           <div class="ui secondary vertical menu">
-            <a class="active item">
-              Upcoming
+            <div class="ui horizontal divider">Menu</div>
+            <a href="{{pathFor 'account'}}" class="item {{isActiveRoute 'account' class='active'}}">
+              Profile
             </a>
-            <a class="item" href="/account/card">
+            <a href="{{pathFor 'card'}}" class="item {{isActiveRoute 'card' class='active'}}">
               Card
             </a>
             <a class="item">

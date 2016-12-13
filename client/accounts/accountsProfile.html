@@ -1,0 +1,11 @@
+<template name="accountsProfile">
+  <form class="form-inline name">
+    {{#with currentUser}}
+    <div class="form-group">
+      <label for="profileName">Full Name</label>
+      <input type="text" class="form-control" id="profileName" placeholder="Full Name" value="{{this.profile.name}}">
+    </div>
+    {{/with}}
+     <button type="submit" class="btn btn-success">Send invitation</button>
+  </form>
+</template>
