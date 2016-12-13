@@ -6,3 +6,11 @@
 .pricing-info {
 
 }
+
+#cardNumber,
+#expYr,
+#expMo,
+#cvc {
+  display: inline-block;
+  width: initial;
+}

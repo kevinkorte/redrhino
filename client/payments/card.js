@@ -1,8 +1,8 @@
 Template.card.events({
   'submit .js-add-card': function(event) {
     event.preventDefault();
+    $('.js-submit-card').addClass('loading');
     var currentUser      = Meteor.userId();
-    var updateCardButton = $(".update-card").button('loading');
     STRIPE.getToken( '.js-add-card', {
         number: $('[data-stripe="cardNumber"]').val(),
         exp_month: $('[data-stripe="expMo"]').val(),
@@ -13,17 +13,20 @@ Template.card.events({
         Meteor.call('stripeSwapCard', token, function(error, response){
           if (error){
             Bert.alert(error.reason.message, 'danger');
-            updateCardButton.button('reset');
+            $('.js-submit-card').removeClass('loading');
+            $('.js-add-card')[0].reset();
           } else {
             console.log(response);
             if (response.rawType !== undefined && response.rawType == "card_error"){
               Bert.alert(response.message, "danger");
-              updateCardButton.button('reset');
+              $('.js-submit-card').removeClass('loading');
+              $('.js-add-card')[0].reset();
             } else {
-              updateCardButton.button('reset');
               Session.set('currentUserPlan_' + currentUser, null);
               Session.set('addingNewCreditCard', false);
               Bert.alert("New card successfully added!", "success");
+              $('.js-submit-card').removeClass('loading');
+              $('.js-add-card')[0].reset();
             }
           }
         });
@@ -36,5 +39,12 @@ Template.card.helpers({
     if (Meteor.user()) {
       return Meteor.user();
     }
-  }
+  },
+  // cardIcon: function(cardType) {
+  //   switch (cardType) {
+  //     case "discover":
+  //       '<img src="/discover.png" />'
+  //       break;
+  //   }
+  // }
 });

@@ -1,14 +1,25 @@
 <template name="card">
+  <h2 class="ui header">
+    <i class="payment icon"></i>
+    <div class="content">Payment Options</div>
+  </h2>
   <div class="ui padded segment">
     <div class="segment-content">
       <div class="card-info">
         <p>Card Type: <strong>{{user.subscription.payment.card.type}}</strong></p>
         <p>Last Four: {{user.subscription.payment.card.lastFour}}</p>
       </div>
-      <button class="ui primary basic button right floated">Primary</button>
+      {{{cardIcon user.subscription.payment.card.type}}}
     </div>
   </div>
-  <form class="js-add-card form-horizontal">
+  <div class="ui attached message">
+  <div class="header">
+    <i class="lock icon"></i>
+    We've got your back!
+  </div>
+  <p>We use the latest security protocols and never store your card number on our servers</p>
+</div>
+  <form class="js-add-card form-horizontal ui form attached fluid segment clearfix">
     <span class="payment-errors"></span>
 
   <div class="form-group">
@@ -23,27 +34,18 @@
     <div class="col-sm-10">
       <input type="text" class="form-control" size="2" data-stripe="expMo" id="expMo">
       <span> / </span>
-      <input type="text" class="form-control" size="2" data-stripe="expYr" id="expYr">
+      <input type="text" class="form-control" size="4" data-stripe="expYr" id="expYr">
     </div>
   </div>
-
-  <div class="form-row">
-    <label>
-      <span>Expiration (MM/YY)</span>
-      <input type="text" size="2" data-stripe="expMo">
-    </label>
-    <span> / </span>
-    <input type="text" size="2" data-stripe="expYr">
+  <div class="form-group">
+    <label for="cvc" class="col-sm-2 control-label">CVC</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" size="4" data-stripe="cvc" id="cvc">
+    </div>
   </div>
-
-  <div class="form-row">
-    <label>
-      <span>CVC</span>
-      <input type="text" size="4" data-stripe="cvc">
-    </label>
-  </div>
-
-
-  <input type="submit" class="submit" value="Submit Payment">
+  <button type="submit" class="ui labeled icon button big blue js-submit-card">
+    <i class="payment icon"></i>
+    Update Payment
+  </button>
   </form>
 </template>
