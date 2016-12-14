@@ -22,7 +22,6 @@ Template.registerHelper('joinDate', (date) => {
 });
 
 Template.registerHelper('cardIcon', (cardType) => {
-console.log(cardType);
   switch (cardType) {
     case "Discover":
       return "<img src='/discover.png' />";
@@ -44,5 +43,11 @@ console.log(cardType);
       break;
     default:
       return "<img src='/credit.png' />"
+  }
+});
+
+Template.registerHelper('unixToTimeLeft', (unixTimestamp) => {
+  if (unixTimestamp) {
+    return moment.unix(unixTimestamp).fromNow();
   }
 })

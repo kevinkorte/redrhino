@@ -24,6 +24,5 @@ Meteor.publish('myUpcoming', function() {
 
 Meteor.publish('events', function(id) {
   check(id, String);
-  console.log(id);
   return Events.find({viewingId: id}, {sort: {timestamp: -1}});
 });

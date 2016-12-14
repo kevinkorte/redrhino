@@ -45,3 +45,15 @@ animation: AnimationName 30s ease infinite;
 .account-page {
   padding-top: 40px;
 }
+
+.ui.card .subscription-status.trialing.text {
+  text-align: center;
+  color: #FBBD08;
+}
+.ui.card .subscription-status.trialing.icon {
+  background: #FBBD08;
+}
+.icon.header .icon.time {
+  color: #fff6db;
+  text-shadow: 1px 1px 7px rgba(0,0,0,0.2);
+}
