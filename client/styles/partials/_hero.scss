@@ -15,18 +15,21 @@
   & img {
     position: absolute;
     right: 0;
+    margin-top: -245px;
+    left: -125px;
   }
 }
 
 .block .ui.menu {
   margin-top: 5px;
+  padding-bottom: 30px;
 }
 .ui.button.free-trial {
   background: #fff;
   color: #5a6de7;
 }
 .highlight {
-  padding: 30px;
+  padding: 0 30px 30px 30px;
 }
 .highlight h1 {
   font-family: 'Lato';
@@ -42,4 +45,102 @@
   background: #fff;
   color: #805be9;
   margin: 14px 0;
+  margin-bottom: 19%;
+}
+.ui.segment.notification-card {
+  display: flex;
+  align-items: center;
+  width: 350px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  box-shadow: 2px 2px 8px -2px rgba(0,0,0,0.5);
+  &.card-right {
+    right: -25px;
+  }
+  &.card-left {
+    left: -25px;
+  }
+}
+.notification-avatar {
+  width: 34px;
+  height: 34px;
+  background: #ccc;
+  border-radius: 100%;
+  margin-right: 10px;
+}
+.notification-feed {
+  & span {
+    font-weight: bold;
+    background: rgba(72,118,230,0.21);
+    padding: 0 4px
+  }
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes slideOutDown {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+@keyframes slideOutDown {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+.slideOutDown {
+  -webkit-animation-name: slideOutDown;
+  animation-name: slideOutDown;
+}
+
+@-webkit-keyframes slideInUp {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInUp {
+  -webkit-animation-name: slideInUp;
+  animation-name: slideInUp;
 }

@@ -1,20 +1,21 @@
 <template name="hero">
   <div class="block">
+    <div class="block-content">
     <div class="container">
       <div class="ui inverted secondary menu">
         <a class="item">
           Pricing
         </a>
         <a class="item">
-          Friends
+          How it Works
         </a>
         <div class="right menu">
           <div class="item">
             <div class="ui button free-trial">30 Day Free Trial</div>
           </div>
-          <a class="ui item">
+          <button class="ui item inverted grey button js-login-btn">
             Login
-          </a>
+          </button>
         </div>
       </div>
     </div>
@@ -29,12 +30,31 @@
           <button class="ui button massive get-started-btn">Get Started For Free</button>
         </div>
         <div class="col-sm-6">
+          <div class="ui segment notification-card card-left">
+            <div class="notification-avatar"></div>
+            <div class="notification-feed">
+              <span>Laura</span> has a new viewing at 6235 W 1st Ave
+            </div>
+          </div>
+          <div class="ui segment notification-card card-right">
+            <div class="notification-avatar"></div>
+            <div class="notification-feed">
+              <span>Steve</span> has checked in at 892 W Smith St
+            </div>
+          </div>
+          <div class="ui segment notification-card card-left">
+            <div class="notification-avatar"></div>
+            <div class="notification-feed">
+              <span>Janice</span> has ended her viewing
+            </div>
+          </div>
           <div class="iphone-wrapper">
             <img src="/iphone6plus.png" alt="">
           </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
 
 </template>
