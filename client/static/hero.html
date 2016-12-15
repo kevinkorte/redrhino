@@ -1,22 +1,40 @@
 <template name="hero">
-  <div id="map"></div>
-      <script>
-        function initMap() {
-          var uluru = {lat: -25.363, lng: 131.044};
-          var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 4,
-            center: uluru,
-            scrollwheel: false,
-            disableDefaultUI: true
-          });
-          var marker = new google.maps.Marker({
-            position: uluru,
-            map: map
-          });
-        }
-      </script>
-      <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuhdLqjZISeGCqV8mjOgzH7ycNd7lSt1w&callback=initMap">
-      </script>
+  <div class="block">
+    <div class="container">
+      <div class="ui inverted secondary menu">
+        <a class="item">
+          Pricing
+        </a>
+        <a class="item">
+          Friends
+        </a>
+        <div class="right menu">
+          <div class="item">
+            <div class="ui button free-trial">30 Day Free Trial</div>
+          </div>
+          <a class="ui item">
+            Login
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="highlight">
+            <h1>
+              A new way for real estate agents to share where they are to friends and family.
+            </h1>
+          </div>
+          <button class="ui button massive get-started-btn">Get Started For Free</button>
+        </div>
+        <div class="col-sm-6">
+          <div class="iphone-wrapper">
+            <img src="/iphone6plus.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </template>
