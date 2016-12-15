@@ -12,10 +12,12 @@ ViewingSchema = new SimpleSchema({
     type: String,
   },
   startTime: {
-    type: Date
+    type: Date,
+    optional: true
   },
   endTime: {
-    type: Date
+    type: Date,
+    optional: true
   },
   author: {
     type: String,
@@ -24,7 +26,8 @@ ViewingSchema = new SimpleSchema({
     }
   },
   "followersEmail": {
-    type: [String]
+    type: [String],
+    optional: true
   }
 })
 

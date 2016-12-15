@@ -1,6 +1,6 @@
 <template name="topbar">
 
-  <div class="ui secondary menu">
+  <div class="ui secondary menu dashboard-nav">
   <a class="active item">
     Home
   </a>
@@ -10,12 +10,21 @@
   <a class="item">
     Friends
   </a>
+  <div class="item">
+    <div class="ui primary button js-new-btn">Sign up</div>
+  </div>
   <div class="right menu">
     <div class="item">
       <div class="ui icon input">
-        <input type="text" placeholder="Search...">
+        <input class="js-search" type="text" placeholder="Search...">
         <i class="search link icon"></i>
       </div>
+    </div>
+    <div class="item">
+      {{#with currentUser}}
+        {{> avatar user=this size="navigation" shape="circle"}}
+        <span>{{this.profile.name}}</span>
+      {{/with}}
     </div>
     <a class="ui item" href="/account">
       Account

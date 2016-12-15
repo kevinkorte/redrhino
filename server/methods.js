@@ -13,6 +13,7 @@ Meteor.methods({
     check(id, String);
     if (id) {
       let event = Viewings.findOne(id);
+      console.log(event);
       let userId = event.author;
       return Meteor.users.findOne(userId);
     } else {
@@ -66,6 +67,23 @@ Meteor.methods({
       subject: "Example Email",
       html: SSR.render('htmlEmail', emailData),
     });
+  },
+  addNewViewing(address, lat, lng) {
+    check(address, String);
+    check(lat, String);
+    check(lng, String);
+    var viewing = Viewings.insert({address: address, lat: lat, lng: lng});
+    console.log(viewing);
+    var client = AlgoliaSearch(Meteor.settings.public.algoliaAppId, Meteor.settings.private.algoliaPrivateKey);
+    var index = client.initIndex('viewings');
+    console.log(typeof viewing);
+// array contains the data you want to save in the index
+// var array = [ { objectID: 1, text: 'Hello' }, { objectID: 2, text: 'World' }  ];
+// index.saveObjects(JSON.parse(viewing), function (error, content) {
+//   if (error) console.error('Error:', error);
+//   else console.log('Content:', content);
+// });
+    return viewing;
   },
   addEvent(lat, lng, accuracy, timestamp, eventId) {
     check(lat, Number);

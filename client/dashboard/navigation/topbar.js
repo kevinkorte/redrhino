@@ -1,6 +1,6 @@
 Template.topbar.events({
   'click .js-new-btn'(event) {
-    console.log(event);
+    $('.js-new-event-modal').modal({});
   },
   'click .js-sign-out'(event) {
     Meteor.logout();
@@ -13,6 +13,13 @@ Template.topbar.events({
         let email = Meteor.user().emails[ 0 ].address;
         Bert.alert( `Verification sent to ${ email }!`, 'success' );
       }
+    });
+  },
+  'keyup .js-search'(event) {
+    var client = algoliasearch(Meteor.settings.public.algoliaAppId, Meteor.settings.public.algoliaPublicKey);
+    var index = client.initIndex('indexName');
+    index.search('something', function searchDone(err, content) {
+      console.log(err, content);
     });
   }
 });

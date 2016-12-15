@@ -1,8 +1,18 @@
-// .navbar-dark {
-//   width: 100%;
-//   height: 68px;
-//   background-color: $navbar-dark;
-// }
+//ugh semantic specificity
+.ui.secondary.menu.dashboard-nav {
+  margin: 0;
+  height: 50px;
+  &:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    top: 50px;
+    background: linear-gradient(to left, #4776E6, #8E54E9);
+    position: absolute;
+    visibility: visible; //VERY IMPORTANT Semantic UI sets this to hidden by default
+  }
+}
+
 .topbar {
   background: #fff;
 }
