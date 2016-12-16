@@ -42,7 +42,8 @@ Template.eventLayout.onRendered(function() {
     // Add a marker to the map once it's ready
     var marker = new google.maps.Marker({
       position: map.options.center,
-      map: map.instance
+      map: map.instance,
+      draggable:true,
     });
   });
   var id = FlowRouter.getParam('id');

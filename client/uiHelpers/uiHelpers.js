@@ -67,4 +67,14 @@ Template.registerHelper('upcomingLabelColor', (timestamp) => {
     }
     // return moment(timestamp).diff(moment(), 'hours') >= 24;
   }
+});
+
+Template.registerHelper('agentName', (agent) => {
+  let agentProfile = Meteor.users.findOne(agent);
+  return agentProfile.profile.name;
+});
+
+Template.registerHelper('getStartTime', (startTime) => {
+  console.log(startTime);
+  return moment(startTime).format("dddd, M/MM - h:mm A");
 })

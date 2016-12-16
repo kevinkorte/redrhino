@@ -1,6 +1,10 @@
 .card.box-shadow {
   box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.2);
 }
+.ui.card.raised {
+  box-shadow: 0px 0px 15px -3px rgba(8, 55, 160, 0.55);
+  border: 1px solid #d5d3d8;
+}
 
 .segment-content {
   display: flex;
@@ -8,4 +12,13 @@
 }
 .card-info p {
   margin-bottom: 2px;
+}
+.avatar.avatar-circle.ui.image {
+  display: inline-block;
+}
+.agent {
+  display: inline-block;
+  height: 30px;
+  position: absolute;
+  line-height: 30px;
 }

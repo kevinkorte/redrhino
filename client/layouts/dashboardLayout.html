@@ -8,54 +8,25 @@
       <div class="ui card raised">
         <div class="content">
           <div class="right floated meta">14h</div>
-          <img class="ui avatar image" src="/images/avatar/large/elliot.jpg"> {{author}}
+          {{> avatar userId=author size="card" class="ui avatar image" shape="circle"}}
+          <div class="agent">{{agentName author}}</div>
         </div>
-        <div class="header">{{address}}</div>
+        <div class="header"><a href="/{{author}}/{{_id}}">{{address}}</a></div>
         <div class="image">
-          <img>
-        </div>
-        <div class="content">
-          <span class="right floated">
-            <i class="heart outline like icon"></i>
-            17 likes
-          </span>
-          <i class="comment icon"></i>
-          3 comments
+          <img src="https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=290x160&maptype=roadmap
+&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318
+&markers=color:red%7Clabel:C%7C40.718217,-73.998284
+&key=AIzaSyDopWicZjc_ohjfNM8ol6OUDV3ut8FqKjk" alt="">
         </div>
         <div class="extra content">
-          <div class="ui large transparent left icon input">
-            <i class="heart outline icon"></i>
-            <input type="text" placeholder="Add Comment...">
-          </div>
-        </div>
+    <a>
+      <i class="flag icon"></i>
+      {{getStartTime startTime}}
+    </a>
+  </div>
       </div>
       {{/each}}
 
-      <div class="ui card raised">
-        <div class="content">
-          <div class="right floated meta">14h</div>
-          <img class="ui avatar image" src="/images/avatar/large/elliot.jpg"> Elliot
-        </div>
-        <div class="header">Matt Giampietro</div>
-        <div class="image">
-          <img>
-        </div>
-        <div class="content">
-          <span class="right floated">
-            <i class="heart outline like icon"></i>
-            17 likes
-          </span>
-          <i class="comment icon"></i>
-          3 comments
-        </div>
-        <div class="extra content">
-          <div class="ui large transparent left icon input">
-            <i class="heart outline icon"></i>
-            <input type="text" placeholder="Add Comment...">
-          </div>
-        </div>
-      </div>
-
 
 
 
@@ -65,10 +36,10 @@
 
 
     </div>
-    <div class="upcoming">
+    <!-- <div class="upcoming">
       <div class="upcoming-head"></div>
       {{> upcoming }}
-    </div>
+    </div> -->
   </div>
 
 </template>
