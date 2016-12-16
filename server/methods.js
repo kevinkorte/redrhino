@@ -73,17 +73,32 @@ Meteor.methods({
     check(lat, String);
     check(lng, String);
     var viewing = Viewings.insert({address: address, lat: lat, lng: lng});
-    console.log(viewing);
+    Meteor.call('saveToSearch', viewing);
+    return viewing;
+  },
+  saveToSearch(viewing) {
+    check(viewing, String);
+    let viewingToSave = Viewings.findOne(viewing);
+    var agent = Meteor.users.findOne({_id: viewingToSave.author});
+    var agentName = agent.profile.name;
     var client = AlgoliaSearch(Meteor.settings.public.algoliaAppId, Meteor.settings.private.algoliaPrivateKey);
     var index = client.initIndex('viewings');
-    console.log(typeof viewing);
+
 // array contains the data you want to save in the index
 // var array = [ { objectID: 1, text: 'Hello' }, { objectID: 2, text: 'World' }  ];
-// index.saveObjects(JSON.parse(viewing), function (error, content) {
-//   if (error) console.error('Error:', error);
-//   else console.log('Content:', content);
-// });
-    return viewing;
+var array = [{
+  "objectID": viewingToSave._id,
+  "address": viewingToSave.address,
+  "lat": viewingToSave.lat,
+  "lng": viewingToSave.lng,
+  "agentID": viewingToSave.author,
+  "agentName": agentName
+}];
+console.log(array);
+index.saveObjects(array, function (error, content) {
+  if (error) console.error('Error:', error);
+  else console.log('Content:', content);
+});
   },
   addEvent(lat, lng, accuracy, timestamp, eventId) {
     check(lat, Number);
