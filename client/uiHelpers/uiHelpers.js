@@ -50,4 +50,21 @@ Template.registerHelper('unixToTimeLeft', (unixTimestamp) => {
   if (unixTimestamp) {
     return moment.unix(unixTimestamp).fromNow();
   }
+});
+
+Template.registerHelper('timeToStart', (timestamp) => {
+  if (timestamp) {
+    return moment(timestamp).fromNow();
+  }
+});
+
+Template.registerHelper('upcomingLabelColor', (timestamp) => {
+  if (timestamp) {
+    if (moment(timestamp).diff(moment(), 'hours') >= 24) {
+      return "green";
+    } else if (moment(timestamp).diff(moment(), 'hours') < 24) {
+      return "yellow";
+    }
+    // return moment(timestamp).diff(moment(), 'hours') >= 24;
+  }
 })

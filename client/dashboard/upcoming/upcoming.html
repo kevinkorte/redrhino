@@ -2,8 +2,15 @@
   <div class="upcoming">
     <div class="list-group">
       {{#each viewings}}
-        <a href="/{{author}}/{{_id}}" class="list-group-item">
-          <h4 class="list-group-item-heading">{{address}}</h4>
+        <a href="/{{author}}/{{_id}}" class="upcoming-anchor">
+          <div class="upcoming-job-details">
+            {{#if startTime}}
+            <div class="ui label {{upcomingLabelColor startTime}}">
+              Starts {{timeToStart startTime}}
+            </div>
+            {{/if}}
+            <h4 class="">{{address}}</h4>
+          </div>
           <!-- <p class="list-group-item-text">...</p> -->
         </a>
       {{/each}}

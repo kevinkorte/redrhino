@@ -19,7 +19,7 @@ Meteor.publish('myDashboard', function() {
 
 Meteor.publish('myUpcoming', function() {
   // var user = Meteor.users.findOne(this.userId);
-  return Viewings.find({author: this.userId});
+  return Viewings.find({author: this.userId}, {sort: {startTime: 1}});
 });
 
 Meteor.publish('events', function(id) {
