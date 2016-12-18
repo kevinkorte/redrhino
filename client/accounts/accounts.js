@@ -5,3 +5,10 @@ Avatar.setOptions({
     'card': 30
   }
 });
+
+Template.accountsMenu.events({
+  'click .js-logout'(event) {
+    event.preventDefault();
+    Meteor.logout();
+  }
+})

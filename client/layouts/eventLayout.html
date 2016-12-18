@@ -2,52 +2,67 @@
   <script src=""></script>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6 map-container">
         <div id="map" class="map">{{> googleMap name="exampleMap" options=exampleMapOptions}}</div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6 viewing-container">
         <a href="/home" class="ui labeled icon button">
   <i class="arrow left icon"></i>
   Return to Dashboard
 </a>
-        <p>{{viewing.address}}</p>
-        <div class="agent">
-          {{agent.profile.name}}
-        </div>
-        <form>
-          <div class="form-group">
-              <div class='input-group date' id='datetimepickerStart'>
-                  <input type='text' class="form-control datetimepicker" data=DateTimePicker name="start-date" />
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-          </div>
-          <div class="form-group">
-              <div class='input-group date' id='datetimepickerEnd'>
-                  <input type='text' class="form-control datetimepicker1" />
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-          </div>
+<div class="ui tertiary inverted center aligned segment">
+  <h3>{{viewing.address}}</h3>
+</div>
 
-        </form>
+        <div class="agent">
+          {{agent viewing.author}}
+        </div>
+        <div class="row">
+          <form>
+          <div class="col-md-6">
+            <div class="form-group">
+                <div class='input-group date' id='datetimepickerStart'>
+                    <input type='text' class="form-control datetimepicker" data=DateTimePicker name="start-date" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+                <div class='input-group date' id='datetimepickerEnd'>
+                    <input type='text' class="form-control datetimepicker1" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+          </div>
+          </form>
+        </div>
+
+
+
+
+<div class="ui divider"></div>
         <form class="form-inline add-follower-email">
           <div class="form-group">
-            <label for="follower-email-address">Email</label>
-            <input type="email" class="form-control" id="follower-email-address" name="email" placeholder="jane.doe@example.com">
+            <label for="follower-email-address">Invite a Follower</label>
+            <input type="email" class="form-control standard-input-style" id="follower-email-address" name="email" placeholder="jane.doe@example.com">
           </div>
-          <button type="submit" class="btn btn-default">Send invitation</button>
+          <button type="submit" class="ui positive basic button" id="send-invite">Send invitation</button>
         </form>
-        <div>
+
+        <div class="list-of-followers">
           {{#each viewing.followersEmail}}
-          <div class="ui label">
+          <div class="ui label basic large blue">
             {{this}}
           </div>
           {{/each}}
         </div>
-        <button class="ui primary button js-check-in">Check In</button>
+        <div class="ui divider"></div>
+        <button class="ui primary button fluid js-check-in">Check In</button>
         {{#each events}}
         <div class="ui feed">
           <div class="event">
@@ -68,11 +83,11 @@
             </div>
           <div class="extra text">
 
-  <div class="progress">
+  <!-- <div class="progress">
   <div class="progress-bar" role="progressbar" aria-valuenow="{{accuracy}}" aria-valuemin="0" aria-valuemax="100" style="width: {{accuracy}}%;">
     <span class="sr-only">60% Complete</span>
   </div>
-</div>
+</div> -->
           </div>
 
         </div>

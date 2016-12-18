@@ -3,8 +3,9 @@ Template.eventLayout.helpers({
       var id = FlowRouter.getParam('id');
       return Viewings.findOne({_id: id});
   },
-  agent() {
-    return Session.get("agent");
+  getAgent(agent) {
+    console.log(agent);
+    return Meteor.users.findOne(agent).profile.name;
   },
   events() {
     let events = Events.find({}, {sort: {timestamp: -1}});
@@ -193,15 +194,18 @@ Template.eventLayout.onRendered(function() {
 Template.eventLayout.events({
   'submit .add-follower-email'(event) {
     event.preventDefault();
+    $('#send-invite').addClass('loading');
     let followerEmail = event.target.email.value;
     let authorId = FlowRouter.getParam('author');
     let id = FlowRouter.getParam('id');
     Meteor.call('prepareEmailToFollower', followerEmail, authorId, id, function(error,response) {
       if (error) {
         //better error handling here
-        console.log(error.reason);
+        Bert.alert( "Good news, you've already sent them an email", 'warning', 'growl-top-right' );
+        $('#send-invite').removeClass('loading');
       } else {
-        console.log(response);
+        Bert.alert( "WooHoo, the email is on its way!", 'success', 'growl-top-right' );
+        $('#send-invite').removeClass('loading');
       }
     })
   },

@@ -25,25 +25,28 @@ Meteor.methods({
     check(followerEmail, String);
     check(authorId, String);
     check(id, String);
-    let emailAlreadyExist = Meteor.users.find({"emails.address": followerEmail}, {limit: 1}).count()>0;
+    console.log(followerEmail);
+    let emailAlreadyExist = Viewings.find({_id: id, followersEmail: {$in: [followerEmail]} }).count()>0;
+    console.log(emailAlreadyExist);
     /*
     RETURNING TRUE BECAUSE USER IS THERE ON ANOTHER JOB, BUT NOT ON THIS JOB
     */
     if (!emailAlreadyExist) {
       Viewings.update(id, {$addToSet: {followersEmail: followerEmail}});
-    }
-    console.log(emailAlreadyExist);
-    if (followerEmail && authorId && id) {
-      Meteor.call('sendEmailToFollower', followerEmail, authorId, id, function(error, response) {
-        if (error) {
-          //better error handling here
-          console.log('email error');
-          console.log(error);
-        } else {
-          console.log('email');
-          console.log(response);
-        }
-      })
+      if (followerEmail && authorId && id) {
+        Meteor.call('sendEmailToFollower', followerEmail, authorId, id, function(error, response) {
+          if (error) {
+            //better error handling here
+            console.log('email error');
+            console.log(error);
+          } else {
+            console.log('email');
+            console.log(response);
+          }
+        })
+      }
+    } else {
+      throw new Meteor.Error(500, 'Error 500: Not found', 'The document is not found');
     }
   },
   // ToDo: Format sending Email better

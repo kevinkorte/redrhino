@@ -15,5 +15,10 @@ Template.dashboardLayout.helpers({
     if (moment(endTime).isBefore(moment())) {
       return "isOverdue";
     };
+  },
+  agentName: function(agent) {
+    Meteor.subscribe('agent', agent);
+    // let thisAgent = Meteor.users.findOne(agent);
+    // Session.set('agent_', thisAgent);
   }
 });

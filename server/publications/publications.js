@@ -28,3 +28,8 @@ Meteor.publish('events', function(id) {
   check(id, String);
   return Events.find({viewingId: id}, {sort: {timestamp: -1}});
 });
+
+Meteor.publish('agent', function(agent) {
+  check(agent, String);
+  return Meteor.users.find({_id: agent});
+})

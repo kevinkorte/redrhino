@@ -4,7 +4,7 @@ Template.registerHelper( 'agent', ( agentId ) => {
       if(error) {
         console.log(error.reason)
       } else {
-        Session.set("agent", response);
+        return response.profile.name
       }
     });
   }
@@ -58,7 +58,7 @@ Template.registerHelper('timeToStart', (timestamp) => {
   }
 });
 
-Template.registerHelper('agentName', (agent) => {
+Template.registerHelper('getAgentName', (agent) => {
   let agentProfile = Meteor.users.findOne(agent);
   return agentProfile.profile.name;
 });
@@ -91,3 +91,11 @@ Template.registerHelper('relativeTime', (startTime, endTime) => {
     }
   }
 });
+Template.registerHelper('isMe', (agent) => {
+  if (agent) {
+    if (agent == Meteor.userId()) {
+      let agentProfile = Meteor.users.findOne(agent);
+      return '<div class="ui red horizontal label">'+agentProfile.profile.name+'</div>'
+    }
+  }
+})

@@ -69,3 +69,19 @@
   font-size: 10px;
   color: darken($bg-upcoming, 22%);
 }
+
+.form-inline.add-follower-email {
+  display: flex;
+  & .form-group {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    margin: 0 15px;
+    & label {
+      margin-right: 15px;
+    }
+    & input.form-control {
+      flex-grow: 1;
+    }
+  }
+}

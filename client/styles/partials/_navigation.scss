@@ -32,6 +32,15 @@
     position: relative;
   }
 }
+.ui.secondary.menu.dashboard-nav a.item.nav-logo,
+.ui.secondary.menu.dashboard-nav a.item.nav-logo:hover {
+  font-family: 'Nunito', sans-serif;
+  font-size: 20px;
+  color: #8E54E9;
+  background: -webkit-linear-gradient(180deg, #4776E6, #8E54E9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .new-btn-wrapper {
   position: relative;
     z-index: 0;
@@ -73,9 +82,6 @@
     transition: width 180ms, height 180ms;
     transition-timing-function: ease-out;
   }
-}
-.nav-search-center {
-  width: 30%;
 }
 
 .nav-account {
@@ -122,6 +128,9 @@
   &:hover {
     color: #fff;
   }
+}
+.dashboard-nav .user-profile-name {
+  padding-left: 6px;
 }
 // .logout {
 //   font-size: 1.2em;
