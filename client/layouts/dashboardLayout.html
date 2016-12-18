@@ -2,29 +2,48 @@
     {{> newEventModal }}
     {{> topbar }}
   <div class="dashboard">
+    <div class="container">
+      <div class="ui compact menu">
+  <a class="item">
+    <i class="icon mail"></i> Messages
+    <div class="floating ui red label">22</div>
+  </a>
+  <a class="item">
+    <i class="icon users"></i> Friends
+    <div class="floating ui teal label">22</div>
+  </a>
+</div>
+    </div>
     <div class="viewings">
       <div class="ui cards">
       {{#each viewings}}
-      <div class="ui card raised">
+
+      <div class="ui centered card raised {{isOverdue endTime}}">
         <div class="content">
-          <div class="right floated meta">14h</div>
+          <div class="right floated meta">{{relativeTime startTime endTime}}</div>
           {{> avatar userId=author size="card" class="ui avatar image" shape="circle"}}
           <div class="agent">{{agentName author}}</div>
+          <a class="header" href="/{{author}}/{{_id}}">{{address}}</a>
         </div>
-        <div class="header"><a href="/{{author}}/{{_id}}">{{address}}</a></div>
+
+
+
         <div class="image">
-          <img src="https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=290x160&maptype=roadmap
-&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318
-&markers=color:red%7Clabel:C%7C40.718217,-73.998284
-&key=AIzaSyDopWicZjc_ohjfNM8ol6OUDV3ut8FqKjk" alt="">
+          <img src="https://maps.googleapis.com/maps/api/staticmap?center={{lat}},{{lng}}&zoom=14&size=290x160&scale=2&maptype=roadmap&markers=size:mid%7Ccolor:red%7C{{lat}},{{lng}}&key=AIzaSyDopWicZjc_ohjfNM8ol6OUDV3ut8FqKjk" alt="Map of {{address}}">
         </div>
         <div class="extra content">
-    <a>
-      <i class="flag icon"></i>
-      {{getStartTime startTime}}
-    </a>
+          <div class="content">
+            <i class="flag icon green"></i>
+            {{getStartTime startTime}}
+          </div>
+          <div class="content">
+            <i class="flag checkered icon"></i>
+            {{getEndTime endTime}}
+          </div>
+
   </div>
-      </div>
+</div>
+
       {{/each}}
 
 

@@ -14,7 +14,9 @@ Meteor.publish('viewings.single', function(id) {
 
 Meteor.publish('myDashboard', function() {
   var user = Meteor.users.findOne(this.userId);
-  return Viewings.find({"followersEmail": user.emails[0].address})
+  console.log(user.emails[0].address);
+  // return Viewings.find({"followersEmail": user.emails[0].address})
+  return Viewings.find({ endTime: { $exists: true }, $or: [{"followersEmail": user.emails[0].address},{author: this.userId}]}, {sort: {startTime: 1}});
 });
 
 Meteor.publish('myUpcoming', function() {

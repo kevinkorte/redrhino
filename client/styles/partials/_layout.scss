@@ -2,11 +2,6 @@ body {
 
 }
 
-
-.dashboard {
-  padding: 20px 50px;
-}
-
 .dashboard-wrapper {
   display: flex;
 }
@@ -40,7 +35,10 @@ body {
   //box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2);
 }
 .dashboard {
-  display: flex;
+  padding: 20px 50px;
+
+}
+body.dashboard-page {
   background-color: #f8f9fd;
 }
 /*

@@ -58,23 +58,36 @@ Template.registerHelper('timeToStart', (timestamp) => {
   }
 });
 
-Template.registerHelper('upcomingLabelColor', (timestamp) => {
-  if (timestamp) {
-    if (moment(timestamp).diff(moment(), 'hours') >= 24) {
-      return "green";
-    } else if (moment(timestamp).diff(moment(), 'hours') < 24) {
-      return "yellow";
-    }
-    // return moment(timestamp).diff(moment(), 'hours') >= 24;
-  }
-});
-
 Template.registerHelper('agentName', (agent) => {
   let agentProfile = Meteor.users.findOne(agent);
   return agentProfile.profile.name;
 });
 
 Template.registerHelper('getStartTime', (startTime) => {
-  console.log(startTime);
-  return moment(startTime).format("dddd, M/MM - h:mm A");
-})
+  if (startTime) {
+    return moment(startTime).format("dddd, M/D - h:mm A");
+  } else {
+    return "No start time set."
+  }
+});
+Template.registerHelper('getEndTime', (endTime) => {
+  if (endTime) {
+    return moment(endTime).format("dddd, M/D - h:mm A");
+  } else {
+    return "No end time set."
+  }
+});
+Template.registerHelper('relativeTime', (startTime, endTime) => {
+  Session.get('time');
+  if (startTime) {
+    if (moment(endTime).isBefore(moment())) {
+      return "Ended "+moment(endTime).fromNow();
+    } else if (moment(startTime).isBefore(moment())) {
+      return "Ends "+moment(endTime).fromNow();
+    } else if (moment(startTime).isAfter(moment())) {
+      return "Starts "+moment(startTime).fromNow();
+    } else {
+      return;
+    }
+  }
+});

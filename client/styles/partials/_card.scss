@@ -4,6 +4,10 @@
 .ui.card.raised {
   box-shadow: 0px 0px 15px -3px rgba(8, 55, 160, 0.55);
   border: 1px solid #d5d3d8;
+  &.isOverdue {
+    border-color: #ea785e;
+    box-shadow: 0px 0px 15px -3px #ea785e;
+  }
 }
 
 .segment-content {
@@ -21,4 +25,8 @@
   height: 30px;
   position: absolute;
   line-height: 30px;
+  padding-left: 8px;
+}
+a.header{
+  padding-top: 8px;
 }
