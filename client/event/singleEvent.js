@@ -47,14 +47,14 @@ Template.eventLayout.onRendered(function() {
       draggable:true,
     });
   });
-  var id = FlowRouter.getParam('id');
-  Meteor.call('findUserById', id, function(error,response){
-    if(error) {
-      console.log(error.reason)
-    } else {
-      Session.set("agent", response);
-    }
-  });
+  // var id = FlowRouter.getParam('id');
+  // Meteor.call('findUserById', id, function(error,response){
+  //   if(error) {
+  //     console.log(error.reason)
+  //   } else {
+  //     Session.set("agent", response);
+  //   }
+  // });
   let loadTimes = (id) => {
     return new Promise( (resolve, reject) => {
       Meteor.call('getStartTime', id, function(error, response) {

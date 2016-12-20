@@ -1,0 +1,13 @@
+.public-event {
+  padding: 20px;
+  position: absolute;
+  top: 15px;
+  background: white;
+  right: 15px;
+  box-shadow: 2px 2px 8px -2px rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+}
+
+.ui.horizontal.public-event.segments {
+  box-shadow: none;
+}

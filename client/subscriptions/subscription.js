@@ -30,4 +30,20 @@ Template.eventLayout.onCreated(function() {
       var id = FlowRouter.getParam('id');
       self.subscribe('events', id);
   });
-})
+});
+
+Template.publicEventLayout.onCreated(function() {
+  var self = this;
+  self.autorun(function() {
+      var id = FlowRouter.getParam('id');
+      self.subscribe('events', id);
+  });
+});
+
+Template.publicEventLayout.onCreated(function() {
+    var self = this;
+    self.autorun(function() {
+        var id = FlowRouter.getParam('id');
+        self.subscribe('viewings.single', id);
+    });
+});
