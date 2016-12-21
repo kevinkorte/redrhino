@@ -98,4 +98,25 @@ Template.registerHelper('isMe', (agent) => {
       return '<div class="ui red horizontal label">'+agentProfile.profile.name+'</div>'
     }
   }
-})
+});
+
+Template.registerHelper('eventMonth', (time) => {
+  if (time) {
+    console.log(time);
+    return moment(time).format('MMMM');
+  }
+});
+
+Template.registerHelper('eventDay', (time) => {
+  if (time) {
+    console.log(time);
+    return moment(time).format('M');
+  }
+});
+
+Template.registerHelper('eventTime', (time) => {
+  if (time) {
+    console.log(time);
+    return moment(time).format('h:mm A');
+  }
+});

@@ -1,9 +1,35 @@
 <template name="publicEventLayout">
-  <div id="map" class="map">{{> googleMap name="publicEventMap" options=publicEventMapOptions}}
-    <div class="public-event">
-      <div class="header">
-        <h4>{{viewing.address}}</h4>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <div id="map" class="map">{{> googleMap name="publicEventMap" options=publicEventMapOptions}}</div>
       </div>
+      {{#with viewing}}
+      <div class="col-md-4">
+        <div class="relative-time">
+          {{relativeTime startTime endTime}}
+        </div>
+        <h4>{{address}}</h4>
+        <div class="ui horizontal public-event segments">
+          <div class="ui segment">
+            <div class="time-block text-capitalize">Start Time</div>
+            <div class="event-month">
+              <p>{{eventMonth startTime}}</p>
+              <p>{{eventDay startTime}}</p>
+              <p>{{eventTime startTime}}</p>
+            </div>
+          </div>
+          <div class="ui segment">
+            <div class="time-block text-capitalize">End Time</div>
+            <div class="event-month">
+              <p>{{eventMonth endTime}}</p>
+              <p>{{eventDay endTime}}</p>
+              <p>{{eventTime endTime}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/with}}
     </div>
   </div>
 

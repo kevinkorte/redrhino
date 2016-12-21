@@ -11,3 +11,24 @@
 .ui.horizontal.public-event.segments {
   box-shadow: none;
 }
+.map {
+  margin-left: -15px;
+}
+
+.relative-time {
+  text-align: center;
+  padding: 8px 0;
+  color: rgba(255,255,255,0.7);
+  width: 100%;
+  min-height: 5px;
+  width: calc(100% + 60px);
+  position: relative;
+  left: -45px;
+  background: #4776E6; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #4776E6 , #8E54E9); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #4776E6 , #8E54E9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.time-block {
+  text-align: center;
+}
