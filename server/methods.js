@@ -12,9 +12,11 @@ Meteor.methods({
   findUserById(id) {
     check(id, String);
     if (id) {
-      let event = Viewings.findOne(id);
+      console.log(id, 'find user by id');
+      let event = Viewings.findOne({author: id});
       console.log(event);
       let userId = event.author;
+      console.log(userId);
       return Meteor.users.findOne(userId);
     } else {
       //need better error handling here

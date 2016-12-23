@@ -44,6 +44,7 @@ Template.publicEventLayout.onCreated(function() {
     var self = this;
     self.autorun(function() {
         var id = FlowRouter.getParam('id');
+        console.log(id, 'public event id');
         self.subscribe('viewings.single', id);
     });
 });

@@ -9,6 +9,7 @@ Meteor.publish('this.user', function() {
 
 Meteor.publish('viewings.single', function(id) {
     check(id, String);
+    console.log(id, 'viewings.single');
     return Viewings.find({_id: id});
 });
 
