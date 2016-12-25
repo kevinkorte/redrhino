@@ -58,9 +58,13 @@ Template.registerHelper('timeToStart', (timestamp) => {
   }
 });
 
-Template.registerHelper('getAgentName', (agent) => {
-  let agentProfile = Meteor.users.findOne(agent);
-  return agentProfile.profile.name;
+Template.registerHelper('getAgentName', () => {
+  let agent = Session.get('agent');
+  console.log(agent);
+  console.log(agent.profile.name);
+  if (agent) {
+    return agent.profile.name;
+  }
 });
 
 Template.registerHelper('getStartTime', (startTime) => {

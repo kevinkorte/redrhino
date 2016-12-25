@@ -15,7 +15,7 @@
 </div>
 
         <div class="agent">
-          {{agent viewing.author}}
+          {{getAgentName}}
         </div>
         <div class="row">
           <form>
@@ -77,7 +77,7 @@
               </div>
               <div class="summary">
                 {{#each this.result}}
-                  {{agent.profile.name}} checked in near {{formattedAddress}}
+                  {{getAgentName}} checked in near {{formattedAddress}}
                 {{/each}}
                 <div class="ui icon button" data-tooltip="Latitude: {{lat}} Longitude: {{lng}}" data-position="left center">
         <i class="world icon"></i>

@@ -3,10 +3,15 @@ Template.eventLayout.helpers({
       var id = FlowRouter.getParam('id');
       return Viewings.findOne({_id: id});
   },
-  getAgent(agent) {
-    console.log(agent);
-    return Meteor.users.findOne(agent).profile.name;
-  },
+  // getAgentName() {
+  //   let agent = Session.get('agent');
+  //   console.log(agent);
+  //   console.log(agent.profile.name);
+  //   if (agent) {
+  //     return agent.profile.name;
+  //   }
+  //   // return Meteor.users.findOne(agent).profile.name;
+  // },
   events() {
     let events = Events.find({}, {sort: {timestamp: -1}});
 
@@ -47,14 +52,15 @@ Template.eventLayout.onRendered(function() {
       draggable:true,
     });
   });
-  // var id = FlowRouter.getParam('id');
-  // Meteor.call('findUserById', id, function(error,response){
-  //   if(error) {
-  //     console.log(error.reason)
-  //   } else {
-  //     Session.set("agent", response);
-  //   }
-  // });
+  var id = FlowRouter.getParam('id');
+  var author = FlowRouter.getParam('author');
+  Meteor.call('findUserById', author, function(error,response){
+    if(error) {
+      console.log(error.reason)
+    } else {
+      Session.set("agent", response);
+    }
+  });
   let loadTimes = (id) => {
     return new Promise( (resolve, reject) => {
       Meteor.call('getStartTime', id, function(error, response) {
