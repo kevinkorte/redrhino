@@ -114,7 +114,7 @@ Template.registerHelper('eventMonth', (time) => {
 Template.registerHelper('eventDay', (time) => {
   if (time) {
     console.log(time);
-    return moment(time).format('M');
+    return moment(time).format('D');
   }
 });
 

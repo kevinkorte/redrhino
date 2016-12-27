@@ -42,5 +42,13 @@ Template.publicEventLayout.onRendered(function() {
       draggable:true,
     });
     console.log(marker);
-  })
+  });
+  var author = FlowRouter.getParam('author');
+  Meteor.call('findUserById', author, function(error,response){
+    if(error) {
+      console.log(error.reason)
+    } else {
+      Session.set("agent", response);
+    }
+  });
 });

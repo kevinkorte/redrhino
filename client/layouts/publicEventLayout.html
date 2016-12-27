@@ -1,36 +1,80 @@
 <template name="publicEventLayout">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-8">
-        <div id="map" class="map">{{> googleMap name="publicEventMap" options=publicEventMapOptions}}</div>
+  <div class="event-wrapper">
+      <div class="event-map-wrapper">
+          <div class="event-map-logo">
+            <div class="map-logo">
+              Agent Guard
+            </div>
+          </div>
+        <div id="map" class="map">
+          {{  > googleMap name="publicEventMap" options=publicEventMapOptions}}
+        </div>
       </div>
       {{#with viewing}}
-      <div class="col-md-4">
-        <div class="relative-time">
-          {{relativeTime startTime endTime}}
-        </div>
-        <h4>{{address}}</h4>
-        <div class="ui horizontal public-event segments">
-          <div class="ui segment">
-            <div class="time-block text-capitalize">Start Time</div>
-            <div class="event-month">
-              <p>{{eventMonth startTime}}</p>
-              <p>{{eventDay startTime}}</p>
-              <p>{{eventTime startTime}}</p>
+      <div class="event-details-wrapper">
+
+            <div class="relative-time">
+              {{relativeTime startTime endTime}}
             </div>
-          </div>
-          <div class="ui segment">
-            <div class="time-block text-capitalize">End Time</div>
-            <div class="event-month">
-              <p>{{eventMonth endTime}}</p>
-              <p>{{eventDay endTime}}</p>
-              <p>{{eventTime endTime}}</p>
+            <div class="event-details">
+              <h3>{{address}}</h3>
+              <div class="ui horizontal public-event segments">
+                <div class="ui segment">
+                  <div class="ui top attached label">Start Time</div>
+                  <div class="event-date">
+                    <p>{{eventMonth startTime}} {{eventDay startTime}}</p>
+                    <p class="event-time">{{eventTime startTime}}</p>
+                  </div>
+                </div>
+                <div class="ui segment">
+                  <div class="ui top attached label">End Time</div>
+                  <div class="event-date">
+                    <p>{{eventMonth endTime}} {{eventDay endTime}}</p>
+                    <p class="event-time">{{eventTime endTime}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="event-feed-wrapper">
+
+                <div class="ui feed">
+                  {{#each events}}
+                  <div class="event">
+                    <div class="label check-in">
+                      <i class="marker icon"></i>
+                    </div>
+                    <div class="content">
+                      <div class="date">
+                        {{unixToTimeAgo timestamp}}
+                      </div>
+                      <div class="summary">
+
+                          {{getAgentName}} checked in near {{#each this.result}}{{formattedAddress}}{{/each}}
+
+                        <div class="extra text">
+                          <small class="text-muted">Lat: {{lat}} Lng: {{lng}}</small>
+                        </div>
+                      </div>
+                    </div>
+
+                </div>
+                {{/each}}
+                </div>
+
+
+
+
+
+              </div>
+
+
             </div>
-          </div>
+
+
+
+
         </div>
-      </div>
       {{/with}}
-    </div>
+
   </div>
 
 </template>
