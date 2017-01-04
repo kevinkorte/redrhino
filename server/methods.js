@@ -141,6 +141,7 @@ index.saveObjects(array, function (error, content) {
     check(id, String);
     check(dateTime, Date);
     console.log(dateTime);
+
     Viewings.update(id, {$set: {startTime: dateTime}}, function(error, response) {
       if (error) {
         return error;
