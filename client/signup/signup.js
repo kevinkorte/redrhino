@@ -50,7 +50,6 @@ Template.signupForm.rendered = function(){
              alert(response.message);
             submitButton.button('reset')
           } else {
-             console.log('login');
             Meteor.loginWithPassword(customer.emailAddress, customer.password, function(error){
               if (error) {
                  alert(error.reason);

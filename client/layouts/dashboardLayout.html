@@ -2,6 +2,7 @@
     {{> newEventModal }}
     {{> topbar }}
   <div class="dashboard">
+    {{#if Template.subscriptionsReady}}
     {{#unless currentUser.emails.[0].verified}}
     <div class="ui icon message">
       <i class="inbox icon"></i>
@@ -58,6 +59,7 @@
 
     </div>
     {{/unless}}
+    {{/if}}
     <!-- <div class="upcoming">
       <div class="upcoming-head"></div>
       {{> upcoming }}

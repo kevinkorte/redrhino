@@ -5,18 +5,20 @@
     Agent Guard
   </a>
   <div class="item">
-    <div class="ui violet button js-new-btn">Create New</div>
+    {{#if Template.subscriptionsReady}}
+      {{#if currentUser.emails.[0].verified}}
+        <div class="ui violet button js-new-btn">Create New</div>
+      {{/if}}
+    {{/if}}
+
   </div>
   <div class="right menu">
     <div class="item">
       {{#with currentUser}}
         {{> avatar user=this size="navigation" shape="circle"}}
-        <span class="user-profile-name">{{this.profile.name}}</span>
+        <a href="/account" class="ui item">{{this.profile.name}}</a>
       {{/with}}
     </div>
-    <a class="ui item" href="/account">
-      Account
-    </a>
   </div>
 </div>
 
