@@ -2,6 +2,17 @@
     {{> newEventModal }}
     {{> topbar }}
   <div class="dashboard">
+    {{#unless currentUser.emails.[0].verified}}
+    <div class="ui icon message">
+      <i class="inbox icon"></i>
+      <div class="content">
+        <div class="header">
+          Check your email for a confirmation email
+        </div>
+        <p>It's very important we have your correct email address before we get started. Please click on the link in the email you should have recieved. <a href="#" class="resend-verification-link">Resend verification link</a></p>
+      </div>
+    </div>
+    {{else}}
     <div class="viewings">
       <div class="ui cards">
       {{#each viewings}}
@@ -46,6 +57,7 @@
 
 
     </div>
+    {{/unless}}
     <!-- <div class="upcoming">
       <div class="upcoming-head"></div>
       {{> upcoming }}
