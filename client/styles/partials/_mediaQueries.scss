@@ -1,0 +1,32 @@
+@media (max-width: 768px) {
+  .ui.secondary.menu.dashboard-nav a.item.nav-logo {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .map-container {
+    margin-left: -15px;
+    position: fixed;
+  }
+  .viewing-container {
+    margin-left: 50%;
+    margin-left: calc(50% - 15px);
+  }
+}
+@media (max-width: 992px) {
+  .map-container, .map {
+    height: 60vh;
+  }
+  .form-inline.add-follower-email {
+    flex-wrap: wrap;
+  }
+  .ui.positive.basic.button#send-invite {
+    display: block;
+    width: 100%;
+    background-color: #21BA45 !important;
+    color: #FFF !important;
+    text-shadow: none;
+    background-image: none;
+  }
+}
