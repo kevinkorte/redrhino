@@ -7,7 +7,7 @@ Template.registerHelper( 'agent', ( agentId ) => {
     //     return response;
     //   }
     // });
-    
+
     let agent = Meteor.users.findOne(agentId);
     return agent.profile.name;
   }
