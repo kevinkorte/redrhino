@@ -1,12 +1,14 @@
 Template.registerHelper( 'agent', ( agentId ) => {
   if (agentId) {
-    Meteor.call('findUserById', agentId, function(error,response){
-      if(error) {
-        console.log(error.reason)
-      } else {
-        return response.profile.name
-      }
-    });
+    // Meteor.call('findUserById', agentId, function(error,response){
+    //   if(error) {
+    //     console.log(error.reason)
+    //   } else {
+    //     return response;
+    //   }
+    // });
+    let agent = Meteor.users.findOne(agentId);
+    return agent.profile.name;
   }
 });
 
@@ -62,6 +64,7 @@ Template.registerHelper('getAgentName', () => {
   let agent = Session.get('agent');
   console.log(agent);
   console.log(agent.profile.name);
+  return agent.profile.name;
   if (agent) {
     return agent.profile.name;
   }

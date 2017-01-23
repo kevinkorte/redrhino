@@ -16,10 +16,22 @@ Template.dashboardLayout.helpers({
       return "isOverdue";
     };
   },
+  // agentName: function(agent) {
+  //   Meteor.subscribe('agent', agent);
+  //   // let thisAgent = Meteor.users.findOne(agent);
+  //   // Session.set('agent_', thisAgent);
+  // }
   agentName: function(agent) {
-    Meteor.subscribe('agent', agent);
-    // let thisAgent = Meteor.users.findOne(agent);
-    // Session.set('agent_', thisAgent);
+    console.log(agent);
+    let self = this;
+    self.agentName = new ReactiveVar();
+    Meteor.call('findUserById', agent, function(error, response) {
+      if (error) {
+        console.log(error);
+      } else {
+        self.agentName.set(response.profile.name);
+      }
+    })
   }
 });
 
