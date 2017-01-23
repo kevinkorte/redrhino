@@ -10,6 +10,7 @@ Meteor.methods({
       let event = Viewings.findOne({author: id});
       console.log(event);
       let userId = event.author;
+      console.log(Meteor.users.findOne(userId));
       return Meteor.users.findOne(userId);
     } else {
       //need better error handling here

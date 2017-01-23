@@ -17,7 +17,6 @@
     <div class="viewings">
       <div class="ui cards">
       {{#each viewings}}
-      {{agentName author}}
       <div class="ui centered card raised {{isOverdue endTime}}">
         <div class="content">
           <div class="right floated meta">{{relativeTime startTime endTime}}</div>
@@ -25,7 +24,7 @@
           {{> avatar userId=author size="card" class="ui avatar image" shape="circle"}}
 
 
-          <div class="agent">{{getAgentName author}}</div>
+          <div class="agent">{{agent author}}</div>
           <a class="header" href="/{{author}}/{{_id}}">{{address}}</a>
         </div>
 
