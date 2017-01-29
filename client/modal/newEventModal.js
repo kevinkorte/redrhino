@@ -18,6 +18,7 @@ Template.newEventModal.events({
         Bert.alert( error.reason, 'danger', 'fixed-top', 'fa-frown-o' );
       }
       $('.modal-backdrop').remove();
+      $('.js-new-event-modal').modal('hide');
       FlowRouter.go('/'+Meteor.userId()+'/'+result);
     });
   }
