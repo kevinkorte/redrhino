@@ -50,6 +50,7 @@ Meteor.methods({
     check(followerEmail, String);
     check(authorId, String);
     check(id, String);
+    console.log('follwerEmail', followerEmail);
     let agent = Meteor.users.findOne(authorId);
     SSR.compileTemplate('htmlEmail', Assets.getText('html-email.html'));
 
@@ -61,7 +62,7 @@ Meteor.methods({
     };
 
     Email.send({
-      to: "kevinkorte15@gmail.com",
+      to: followerEmail,
       from: "from.address@email.com",
       subject: "Example Email",
       html: SSR.render('htmlEmail', emailData),
@@ -161,6 +162,17 @@ index.saveObjects(array, function (error, content) {
           throw new Meteor.Error('add-event', 'Something went wrong starting an event');
         }
       });
+      let viewing = Viewings.findOne(eventId, {fields: {followersEmail: 1, author: 1}});
+      let id = viewing._id;
+      let author = viewing.author;
+      let emails = viewing.followersEmail;
+      emails.forEach(function(emails, index) {
+        Meteor.call('sendEmailToFollower', emails, author, id);
+        console.log(emails, 'sending email');
+        console.log(index);
+      });
+      console.log(viewing.followersEmail);
+
     });
   },
   updateStartDateTime(id, dateTime) {

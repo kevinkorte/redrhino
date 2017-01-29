@@ -132,9 +132,9 @@ Template.registerHelper('eventTime', (time) => {
 Template.registerHelper('countdownUntilEnd', (activeAt, endTime) => {
   console.log(activeAt);
   console.log(endTime);
-  return endTime;
-  let interval = Meteor.setInterval(function() {
-    console.log('set interval');
-  }, 5000);
-  console.log(interval);
+  return 'Ends ' + moment(Session.get('time')).to(endTime);
+  // let interval = Meteor.setInterval(function() {
+  //   console.log('set interval');
+  // }, 5000);
+  // console.log(interval);
 })
