@@ -119,8 +119,10 @@ index.saveObjects(array, function (error, content) {
       lng: lng,
       accuracy: accuracy,
       timestamp: timestamp,
+      statement: 'checked in near'
     }, function(error, response) {
       if (error) {
+        console.log(error);
         throw new Meteor.Error('add-event', 'Opps, something went wrong updating your location');
       }
       Events.update(response, {$set: {result}}, {filter: false, validate: false}, function(error,result){
@@ -130,6 +132,36 @@ index.saveObjects(array, function (error, content) {
       });
     });
     // Events.update({result}, {filter: false, validate: false});
+  },
+  startEventTime(lat, lng, accuracy, timestamp, eventId) {
+    console.log("STARTING");
+    check(lat, Number);
+    check(lng, Number);
+    check(accuracy, Number);
+    check(timestamp, Number);
+    check(eventId, String);
+    let geo = new GeoCoder({
+      httpAdapter: "https",
+      apiKey: Meteor.settings.public.mapsapi
+    });
+    let result = geo.reverse(lat, lng);
+    Events.insert({
+      viewingId: eventId,
+      lat: lat,
+      lng: lng,
+      accuracy: accuracy,
+      timestamp: timestamp,
+      statement: 'started this event near'
+    }, function(error, response) {
+      if (error) {
+        throw new Meteor.Error('add-event', 'Something went wrong starting an event')
+      }
+      Events.update(response, {$set: {result}}, {filter: false, validate: false}, function(error, result) {
+        if (error) {
+          throw new Meteor.Error('add-event', 'Something went wrong starting an event');
+        }
+      });
+    });
   },
   updateStartDateTime(id, dateTime) {
     check(id, String);
@@ -169,5 +201,11 @@ index.saveObjects(array, function (error, content) {
     check(user, String);
     check(profileName, String);
     Meteor.users.update(user, {$set: {'profile.name': profileName}});
+  },
+  startTimer(id) {
+    check(id, String);
+    let user = Meteor.userId();
+    console.log(user);
+    Viewings.update(id, {$set: {active: true, activeAt: new Date}});
   }
 });

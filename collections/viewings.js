@@ -25,6 +25,14 @@ ViewingSchema = new SimpleSchema({
       return this.userId
     }
   },
+  active: {
+    type: Boolean,
+    defaultValue: false
+  },
+  activeAt: {
+    type: Date,
+    optional: true
+  },
   "followersEmail": {
     type: [String],
     optional: true

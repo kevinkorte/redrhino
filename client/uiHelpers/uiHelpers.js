@@ -128,3 +128,13 @@ Template.registerHelper('eventTime', (time) => {
     return moment(time).format('h:mm A');
   }
 });
+
+Template.registerHelper('countdownUntilEnd', (activeAt, endTime) => {
+  console.log(activeAt);
+  console.log(endTime);
+  return endTime;
+  let interval = Meteor.setInterval(function() {
+    console.log('set interval');
+  }, 5000);
+  console.log(interval);
+})

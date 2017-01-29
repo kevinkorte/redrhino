@@ -1,3 +1,8 @@
+// let interval = Meteor.setInterval(function() {
+//     console.log(activeAt, 'logging time');
+// }, 1000);
+// console.log(interval);
+
 Template.eventLayout.helpers({
   viewing: ()=> {
       var id = FlowRouter.getParam('id');
@@ -19,6 +24,9 @@ Template.eventLayout.helpers({
       return events;
     }
   },
+  // countdownUntilEnd: function(activeAt, endTime) {
+  //   console.log('activeAt', activeAt, endTime);
+  // },
   exampleMapOptions: function() {
     // Make sure the maps API has loaded
     var id = FlowRouter.getParam('id');
@@ -32,7 +40,8 @@ Template.eventLayout.helpers({
       var eventLng = Number(event.lng);
       return {
         center: new google.maps.LatLng(eventLat, eventLng),
-        zoom: 17
+        zoom: 17,
+        gestureHandling: 'cooperative'
       };
     }
   },
@@ -40,7 +49,6 @@ Template.eventLayout.helpers({
 
 Template.eventLayout.onCreated(function() {
   // We can use the `ready` callback to interact with the map API once the map is ready.
-
 });
 
 Template.eventLayout.onRendered(function() {
@@ -216,7 +224,7 @@ Template.eventLayout.events({
     })
   },
   'click .js-check-in'(event) {
-    $('.js-check-in').addClass('loading');
+    $('.js-check-in').addClass('loading massive');
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(function(position) {
         let lat = position.coords.latitude;
@@ -230,6 +238,26 @@ Template.eventLayout.events({
             $('.js-check-in').removeClass('loading');
           } else {
             $('.js-check-in').removeClass('loading');
+          }
+        });
+      });
+    }
+  },
+  'click .js-start-timer'(event) {
+    event.preventDefault();
+    console.log(event);
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        let lat = position.coords.latitude;
+        let lng = position.coords.longitude;
+        let accuracy = position.coords.accuracy;
+        let timestamp = position.timestamp;
+        let id = FlowRouter.getParam('id');
+        Meteor.call('startEventTime', lat, lng, accuracy, timestamp, id, function(error, response) {
+          if ( error) {
+            Bert.alert( error.reason, "warning" );
+          } else {
+            consol.log(response);
           }
         });
       });

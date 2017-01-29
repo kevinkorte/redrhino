@@ -1,31 +1,33 @@
 <template name="eventLayout">
-  <div class="ui secondary menu ">
 
-    <div class="item">
-      {{#with currentUser}}
-        {{> avatar user=this size="navigation" shape="circle"}}
-        <a href="/account" class="ui item">{{this.profile.name}}</a>
-      {{/with}}
-    </div>
-</div>
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-6 map-container">
         <div id="map" class="map">{{> googleMap name="exampleMap" options=exampleMapOptions}}</div>
       </div>
       <div class="col-md-6 viewing-container">
-        <a href="/home" class="ui labeled icon button">
-  <i class="arrow left icon"></i>
-  Return to Dashboard
+
+        <div class="ui secondary menu ">
+
+          <div class="item">
+            <!--getAgentName-->
+            <strong>{{getAgentName}}</strong>
+          </div>
+          <div class="item right">
+            <a href="/home" class="ui labeled icon button">
+<i class="arrow left icon"></i>
+Return to Dashboard
 </a>
+          </div>
+      </div>
+
+
+
 <div class="ui tertiary inverted center aligned segment">
   <h3>{{viewing.address}}</h3>
 </div>
 
-        <div class="agent">
-          {{getAgentName}}
-        </div>
-        <div class="row">
+        <div class="row time-block">
           <form>
           <div class="col-md-6">
             <div class="form-group">
@@ -52,10 +54,6 @@
           </form>
         </div>
 
-
-
-
-<div class="ui divider"></div>
         <form class="form-inline add-follower-email">
           <div class="form-group">
             <label for="follower-email-address">Invite a Follower</label>
@@ -71,8 +69,10 @@
           </div>
           {{/each}}
         </div>
-        <div class="ui divider"></div>
-        <button class="ui primary button fluid js-check-in">Check In</button>
+        <!-- <button class="ui primary button fluid js-check-in">Check In</button> -->
+        <button class="circular ui icon button massive js-check-in">
+          <i class="icon pin"></i>
+        </button>
         {{#each events}}
         <div class="ui feed">
           <div class="event">
@@ -84,9 +84,7 @@
                 {{unixToTimeAgo timestamp}}
               </div>
               <div class="summary">
-                {{#each this.result}}
-                  {{getAgentName}} checked in near {{formattedAddress}}
-                {{/each}}
+                  {{getAgentName}} {{statement}} {{#each this.result}} {{formattedAddress}} {{/each}}
                 <div class="ui icon button" data-tooltip="Latitude: {{lat}} Longitude: {{lng}}" data-position="left center">
         <i class="world icon"></i>
       </div>
@@ -107,6 +105,15 @@
 
 
         {{/each}}
+        <div class="ui bottom fixed menu">
+          <div class="item">
+            {{countdownUntilEnd viewing.activeAt viewing.endTime}}
+          </div>
+          <div class="item right">
+    <button class="ui button green js-start-timer">Start Viewing</button>
+  </div>
+
+</div>
       </div>
     </div>
   </div>

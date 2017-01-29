@@ -25,6 +25,17 @@
 .event-details {
   padding: 15px;
 }
+
+.ui.tertiary.inverted.center.aligned.segment {
+  margin-left: -30px;
+  margin-right: -30px;
+  margin-bottom: 0;
+  border-radius: 0;
+  padding: 50px 0;
+  background: #4776E6; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #4776E6 , #8E54E9); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #4776E6 , #8E54E9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 // .public-event {
 //   padding: 20px;
 //   position: absolute;
@@ -33,7 +44,10 @@
 //   box-shadow: 2px 2px 8px -2px rgba(0, 0, 0, 0.5);
 //   border-radius: 4px;
 // }
-
+.row.time-block {
+  background: #222d2f;
+  padding-top: 15px;
+}
 .ui.horizontal.public-event.segments {
   box-shadow: none;
 }
@@ -80,4 +94,26 @@
   height: 1500px;
   border: 1px solid blue;
   width: 100%;
+}
+.list-of-followers {
+  margin-left: -30px;
+  margin-right: -30px;
+  background: #eaeaea;
+  padding: 14px !important;
+}
+@media (min-width: 992px) {
+  .ui.bottom.fixed.menu {
+    width: calc(50% + 30px);
+    margin-left: calc(50% - 30px);
+  }
+  .row.time-block {
+    margin-left: -30px;
+    margin-right: -30px;
+  }
+}
+@media (max-width: 991px) {
+  .list-of-followers {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }

@@ -15,6 +15,9 @@ EventsSchema = new SimpleSchema({
   },
   timestamp: {
     type: Number,
+  },
+  statement: {
+    type: String,
   }
 });
 
